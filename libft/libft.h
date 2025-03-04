@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:54:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 08:28:54 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/04 13:24:35 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ void	free_tab(char **tab);
 int		occur(const char *str, char c);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_skip(char *str, char c);
+int		ft_size(char **array);
+void	ft_replace(char *str, const char *charset, char replace_char);
 
 // OTHER FUNCTIONS //
 char	*ft_substr(char const *s, unsigned int start, size_t len);

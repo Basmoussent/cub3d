@@ -21,10 +21,10 @@ int	rgb_to_hex(char *rgb)
 
 	rgb_values = ft_split(rgb, ',');
 	free(rgb);
-	if (rgb_values)
+	if (!rgb_values)
 		return (-1);
-	if (sizeof(rgb_values) / sizeof(rgb_values[0]) != 3)
-	{	
+	if (ft_size(rgb_values) != 3)
+	{
 		free_tab(rgb_values);
 		return (-1);
 	}
@@ -32,17 +32,24 @@ int	rgb_to_hex(char *rgb)
 	g = ft_atoi(rgb_values[1]);
 	b = ft_atoi(rgb_values[2]);
 	free_tab(rgb_values);
-	return ((r << 16) | (g << 8) | b);
+	return (r << 16 | g << 8 | b);
 }
 
 void parsing(s_game *g)
 {
-	char *line;
+	char	*line;
 	
 	line = get_next_line(g->tex->fd);
-	while(line)
+	while(g->tex->loaded != 1)
 	{
 		extract_texture(g, line);
+		line = get_next_line(g->tex->fd);
+	}
+	while (line)
+	{
+		if (line == NULL)
+			break;
 		extract_line(g, line);
+		line = get_next_line(g->tex->fd);
 	}
 }

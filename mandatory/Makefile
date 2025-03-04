@@ -6,18 +6,20 @@ NAME = ../cub3d
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fPIE
+CFLAGS = -Wall -Wextra -Werror -g3 -fPIE --sanitize=address
 
 SRCDIR = srcs
 EXECDIR = $(SRCDIR)/exec
 PARDIR = $(SRCDIR)/parsing
+UTILDIR = $(SRCDIR)/utils
 INCDIR = ./include
 LIBFTDIR = ../libft
 MLXDIR = ../mlx
 OBJDIR = objs
 
 SRCS =	$(SRCDIR)/main.c \
-		$(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c
+		$(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c \
+		$(UTILDIR)/free.c
 
 OBJS = $(SRCS:.c=.o)
 

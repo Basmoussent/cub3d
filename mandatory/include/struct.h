@@ -19,8 +19,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/*
 #define WIN_WIDTH 1920
 #define	WIN_HEIGHT 1080      // a verifier
+*/
+# define WIDTH 100
+# define HEIGHT 100
 
 
 typedef struct t_texture {
@@ -42,6 +46,9 @@ typedef struct t_player {
 	int 	pdy; // dir_y
 	double	plane_x; // surement 0
 	double	plane_y; // surement 0.66
+  
+  // basem
+  double  pa;
 } s_player;
 
 typedef struct s_img
@@ -53,14 +60,15 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-typedef struct t_game {
+typedef struct t_game
+{
+	void		*mlx;
+	void		*win;
 	char		**map;
 	s_player	*p;
 	s_texture	*tex;
 	t_img		*img;
-	void		*mlx;
-	void		*win;
-} s_game;
+}	s_game;
 
 typedef struct t_rayon
 {
@@ -84,7 +92,6 @@ typedef struct t_rayon
 }	s_rayon;
 
 
-
 enum {
 	W = 119,
 	S = 115,
@@ -98,8 +105,11 @@ enum {
 };
 
 //PARSING
-void parsing(s_game *g);
-void extract_texture(s_game *g, char *line);
-void extract_line(s_game *g, char *line);
+void 	parsing(s_game *g);
+void 	extract_texture(s_game *g, char *line);
+void 	extract_line(s_game *g, char *line);
+void 	init_map(s_game *g, char *line);
+int		rgb_to_hex(char *rgb);
+void	free_all(s_game *g);
 
 #endif

@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_skip.c                                          :+:      :+:    :+:   */
+/*   ft_replace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 08:27:42 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 11:43:49 by bdenfir          ###   ########.fr       */
+/*   Created: 2025/03/04 13:24:15 by bdenfir           #+#    #+#             */
+/*   Updated: 2025/03/04 13:24:17 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char *ft_skip(char *str, char c)
+void	ft_replace(char *str, const char *charset, char replace_char)
 {
-	int	i;
+	int		i;
+	int		j;
 
 	i = 0;
-	while(str[i] == c)
+	while (str[i] != '\0')
+	{
+		j = 0;
+		while (charset[j] != '\0')
+		{
+			if (str[i] == charset[j])
+			{
+				str[i] = replace_char;
+				break ;
+			}
+			j++;
+		}
 		i++;
-	return (&str[i]);
+	}
 }
