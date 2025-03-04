@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/04 18:12:46 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:28:25 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -124,5 +124,11 @@ void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
 // graphical.c
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int	init_graphical(void	*mlx, void *win, t_img *img);
+
+// UTILS
+
+// free_graphical.c
+void	free_graphical(int type, void *mlx, void *img, void *win);
+
 
 #endif
