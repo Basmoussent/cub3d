@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/04 15:34:22 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/04 16:44:45 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 int	rendering(s_game *game)
 {
-	
+	int	x;
+	s_rayon	*rayon;
 
+	x = 0;
+	while (x < WIN_WIDTH) // ou WIDTH
+	{
+		get_rayon_data(game, rayon, x);
+		...
+		x++;
+	}
 
 }
 
