@@ -1,7 +1,34 @@
-mettre le vide en mur ?
-  111
-  101
-  111
-changer les espaces en 1 pour le bien du parsing ?
-
 verifier si les fichiers finissent bien par .xpm
+je segfault dans l'allocation de la mpa ou quand je destroy les image
+
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==608931==ERROR: AddressSanitizer: SEGV on unknown address (pc 0x55b4b4171a02 bp 0x6030000007c0 sp 0x7ffd87250120 T0)
+==608931==The signal is caused by a READ memory access.
+==608931==Hint: this fault was caused by a dereference of a high value address (see register values below).  Dissassemble the provided pc to learn which register was used.
+    #0 0x55b4b4171a02 in mlx_destroy_image (/home/bdenfir/42-Cursus/cub3d/cub3d/cub3d+0xba02)
+    #1 0x55b4b416f581 in free_texture srcs/utils/free.c:22
+    #2 0x55b4b416f870 in free_all srcs/utils/free.c:59
+    #3 0x55b4b416ddd5 in main srcs/main.c:57
+    #4 0x7f9610eb1d8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #5 0x7f9610eb1e3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #6 0x55b4b416d414 in _start (/home/bdenfir/42-Cursus/cub3d/cub3d/cub3d+0x7414)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV (/home/bdenfir/42-Cursus/cub3d/cub3d/cub3d+0xba02) in mlx_destroy_image
+==608931==ABORTING
+➜  cub3d git:(main) ✗ ./cub3d maps/map.cub
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==608956==ERROR: AddressSanitizer: SEGV on unknown address 0x00067fff8005 (pc 0x560ae751d68b bp 0x7fff38077520 sp 0x7fff38077500 T0)
+==608956==The signal is caused by a READ memory access.
+    #0 0x560ae751d68b in extract_line srcs/parsing/map.c:66
+    #1 0x560ae751d14c in parsing srcs/parsing/parsing.c:52
+    #2 0x560ae751c92c in main srcs/main.c:41
+    #3 0x7f3474dadd8f in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #4 0x7f3474dade3f in __libc_start_main_impl ../csu/libc-start.c:392
+    #5 0x560ae751c414 in _start (/home/bdenfir/42-Cursus/cub3d/cub3d/cub3d+0x7414)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV srcs/parsing/map.c:66 in extract_line
+==608956==ABORTING
