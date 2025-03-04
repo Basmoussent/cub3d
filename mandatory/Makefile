@@ -12,6 +12,9 @@ SRCDIR = srcs
 EXECDIR = $(SRCDIR)/exec
 PARDIR = $(SRCDIR)/parsing
 UTILDIR = $(SRCDIR)/utils
+
+
+
 INCDIR = ./include
 LIBFTDIR = ../libft
 MLXDIR = ../mlx
@@ -19,6 +22,7 @@ OBJDIR = objs
 
 SRCS =	$(SRCDIR)/main.c \
 		$(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c \
+		$(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
 		$(UTILDIR)/free.c
 
 OBJS = $(SRCS:.c=.o)

@@ -6,13 +6,13 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/04 17:13:52 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/04 17:39:59 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h"
 
-void	get_step(s_game *game, s_rayon *rayon)
+static void	get_step(s_game *game, s_rayon *rayon)
 {
 	if (rayon->dir_x < 0)
 	{
@@ -36,7 +36,7 @@ void	get_step(s_game *game, s_rayon *rayon)
 	}
 }
 
-void	dda(s_game *game, s_rayon *rayon)
+static void	dda(s_game *game, s_rayon *rayon)
 {
 	while (1)
 	{
@@ -57,7 +57,7 @@ void	dda(s_game *game, s_rayon *rayon)
 	}
 }
 
-void	wall_height(s_game *game, s_rayon *rayon)
+static void	wall_height(s_game *game, s_rayon *rayon)
 {
 	if (rayon->side == 0)
 		rayon->wall_dist = (rayon->map_x - game->p->pos_x + (1 - rayon->step_x) / 2) / rayon->dir_x;

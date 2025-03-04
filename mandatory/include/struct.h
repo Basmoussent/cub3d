@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/04 15:46:12 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/04 18:12:46 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -111,5 +111,18 @@ void 	extract_line(s_game *g, char *line);
 void 	init_map(s_game *g, char *line);
 int		rgb_to_hex(char *rgb);
 void	free_all(s_game *g);
+
+// EXEC
+
+// exec.c
+int	rendering(s_game *game);
+int	execution(s_game *game);
+
+// get_rayon_data.c
+void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
+
+// graphical.c
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+int	init_graphical(void	*mlx, void *win, t_img *img);
 
 #endif
