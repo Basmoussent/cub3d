@@ -6,26 +6,53 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/04 18:11:11 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/04 22:26:04 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h" // a changer
 
+void	draw_textures(s_gqme *game, s_rayon *rayon, int x)
+{
+	int		texX;
+	int		texY;
+	double	step;
+	double	texPos;
+
+	texX = (int)(wall * (double)texWidth); // /!\ texWidth est une macro (genre 64), voir comment on gere ca pour que les textures donnes soient au bon format
+	if (rayon->side == 0 && rayon->dir_x > 0)
+		texX = texWidth - texX - 1;
+	if (rayon->side == 1 && rayon->dir_y < 0)
+		texX = texWidth - texX - 1;
+	step = 1.0 * texHeight / rayon->line_height;
+	texPos = (rayon->draw_start - WIN_HEIGHT / 2 + rayon->line_height / 2) * step;
+	while (y < line->draw_end)
+	{
+		texY = (int)texPos & (texHeight - 1);
+		texPos += step;
+		buffer[y][x] = texture[texNum][texHeight * texY + texX];
+		y++;
+	}
+// gerer avancee y + envoyer buffer + definir texHeight
+}
+
 void	draw_wall(s_game *game, s_rayon *rayon, int x)
 {
 	int	y;
 	int	color;
+	int	buffer[WIN_HEIGHT][WIN_WIDTH];
+// plutot que faire my mlx a chaque fois, creer un buffer qui stocke toutes les couleurs
+
 
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
 		if (y < rayon->draw_start)
-			color = // couleur plafond
+			buffer[y][x] = // couleur plafond
 		if (y >= rayon->draw_start && y <= rayon->draw_end)
-			color = // couleur mur, implementer textures;
+			color = draw_textures(game, rayon, x);// couleur mur, implementer textures;
 		else
-			color = // couleur sol
+			buffer[y][x] = // couleur sol
 		my_mlx_pixel_put(game->img, x, y, color);
 		y++;
 	}
