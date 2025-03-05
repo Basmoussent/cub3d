@@ -19,19 +19,23 @@ To rotate a vactor, simply multiply it with the rotation matrix
 (where a is the magnitude of rotation)
 */
 
-void	rotation(s_game *game, int a)
+void	rotation(s_game *game, int index, int a)
 {
-	game->p->dir_x *= a;
-	game->p->dir_y *= a;
-	game->p->plane_x *= a;
-	game->p->plane_y *= a;
+  while (game->key_bool[index] == 1)
+  {
+	  game->p->dir_x *= a;
+	  game->p->dir_y *= a;
+	  game->p->plane_x *= a;
+	  game->p->plane_y *= a;
+    rendering(game);
+    usleep(200); // aleatoire
+  }
 }
 
 void	rotate_camera(s_game *game, int keycode)
 {
 	if (keycode == 65361)
-		rotation(game, 0.5); // valeur aleatoire ici
+		rotation(game, 4, 0.5); // valeur aleatoire ici
 	else if (keycode == 65363)
-		rotation(game, -0.5); // valeur aleatoire
-	rendering(game);
+		rotation(game, 5, -0.5); // valeur aleatoire
 }

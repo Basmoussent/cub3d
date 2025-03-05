@@ -12,6 +12,26 @@
 
 #include "cub3d.h"
 
+int draw_buffer(s_game *game, int **buffer)
+{
+  int x;
+  int y;
+
+  y = 0;
+  while (y < WIN_WIDTH)
+  {
+    x = 0;
+    while (x < WIN_HEIGHT)
+    {
+      my_mlx_pixel_put(game->img, x, y, buffer[y][x]);
+      x++;
+    }
+    y++;
+  }
+  mlx_put_image_to_window(game->mlx, game->win, game->img->img, x, y);
+  return (1);
+}
+
 int	rendering(s_game *game)
 {
 	int	x;
@@ -39,8 +59,9 @@ int	rendering(s_game *game)
 		get_color(game, rayon, buffer, x);
 		x++;
 	}
-//	draw_buffer(game, buffer);
-	free(rayon);
+	draw_buffer(game, buffer);
+//  free buffer
+  free(rayon);
 	return (1);
 }
 
