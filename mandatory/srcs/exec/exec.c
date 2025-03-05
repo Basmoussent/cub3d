@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 11:03:10 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:56:54 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	execution(s_game *game)
 		return (0);
 	rendering(game);
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 1, 1);
-//	key_controls()  // a faire
+	key_controls(game);
 	mlx_loop(game->mlx);
 	return (1);
 }

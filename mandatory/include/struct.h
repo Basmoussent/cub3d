@@ -77,7 +77,6 @@ typedef struct t_rayon
 	double	wall_x;
 }	s_rayon;
 
-
 enum {
 	W = 119,
 	S = 115,

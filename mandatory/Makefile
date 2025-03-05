@@ -23,7 +23,7 @@ OBJDIR = objs
 SRCS =	$(SRCDIR)/main.c \
 		$(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c \
 		$(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
-		$(EXECDIR)/get_color.c \
+		$(EXECDIR)/get_color.c $(EXECDIR)/key_controls.c \
 		$(UTILDIR)/free.c $(UTILDIR)/free_graphical.c
 
 OBJS = $(SRCS:.c=.o)

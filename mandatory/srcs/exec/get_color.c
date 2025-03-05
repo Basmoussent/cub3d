@@ -6,12 +6,12 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 11:32:17 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:00:17 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+/*
 int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x, int y)
 {
 	int		texX;
@@ -39,6 +39,20 @@ int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x, int y)
 	return (y - 1);
 // definir texHeight (macro)
 }
+*/
+
+// fonction nulle pour continuer
+int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x, int y)
+{
+	(void)game;
+	while (y < rayon->draw_end)
+	{
+		buffer[y][x] = 255;
+		y++;
+	}
+	return (y - 1);
+}
+
 
 void	get_color(s_game *game, s_rayon *rayon, int **buffer, int x)
 {

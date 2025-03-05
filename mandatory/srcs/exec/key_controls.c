@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:32:26 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 11:53:02 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:00:39 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	ft_button(int keycode, s_game *game)
 		free(game->mlx);
 		// free_game
 		exit(0);
-		return (0);
 	}
+	return (0);
 }
 
 
