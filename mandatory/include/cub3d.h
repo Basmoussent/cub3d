@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 10:50:58 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:53:28 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 # define WIDTH 100
 # define HEIGHT 100
 
+# define texWidth 64       // a adapter
+# define texHeight 64
 
 // PARSING
 void 	parsing(s_game *g);
@@ -51,6 +53,9 @@ void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
 // graphical.c
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int	init_graphical(void	*mlx, void *win, t_img *img);
+
+//key_controls.c
+void	key_controls(s_game *game);
 
 // UTILS
 
