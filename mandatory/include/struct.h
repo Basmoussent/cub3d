@@ -6,12 +6,13 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/04 18:28:25 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:50:12 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
-#ifndef GAME_H
-# define GAME_H
+#ifndef STRUCT_H
+# define STRUCT_H
+
 
 # include "mlx.h"
 # include "libft.h"
@@ -19,10 +20,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/*
+
 #define WIN_WIDTH 1920
 #define	WIN_HEIGHT 1080      // a verifier
-*/
+
 # define WIDTH 100
 # define HEIGHT 100
 
@@ -40,10 +41,10 @@ typedef struct t_texture {
 }	s_texture;
 
 typedef struct t_player {
-	int 	px; // pos_x
-	int		py; // pos_y
-	int		pdx; // dir_x
-	int 	pdy; // dir_y
+	int 	pos_x; // px
+	int		pos_y; // py
+	int		dir_x; // pdx
+	int 	dir_y; // pdy
 	double	plane_x; // surement 0
 	double	plane_y; // surement 0.66
   
@@ -103,7 +104,7 @@ enum {
 	DOWN = 65364,
 	RIGHT = 65363
 };
-
+/*
 //PARSING
 void 	parsing(s_game *g);
 void 	extract_texture(s_game *g, char *line);
@@ -118,6 +119,9 @@ void	free_all(s_game *g);
 int	rendering(s_game *game);
 int	execution(s_game *game);
 
+// get_color.c
+void	get_color(s_game *game, s_rayon *rayon, int **buffer, int x);
+
 // get_rayon_data.c
 void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
 
@@ -129,6 +133,6 @@ int	init_graphical(void	*mlx, void *win, t_img *img);
 
 // free_graphical.c
 void	free_graphical(int type, void *mlx, void *img, void *win);
-
+*/
 
 #endif

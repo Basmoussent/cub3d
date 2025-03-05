@@ -6,11 +6,11 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/04 17:39:59 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:51:47 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "cub3d.h"
 
 static void	get_step(s_game *game, s_rayon *rayon)
 {

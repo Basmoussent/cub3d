@@ -6,11 +6,11 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:53:45 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/04 17:49:10 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:51:53 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"  // a changer
+#include "cub3d.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {

@@ -6,11 +6,11 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:13:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 16:15:17 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:52:18 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "cub3d.h"
 
 
 void load_texture(s_game *g, char *file, char *val)

@@ -6,11 +6,11 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:15:05 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 16:15:33 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:52:04 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "cub3d.h"
 
 void	add_line_to_map(s_game *g, char *line, int i)
 {

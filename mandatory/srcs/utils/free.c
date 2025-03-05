@@ -6,11 +6,11 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 16:15:04 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:52:30 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <struct.h>
+#include "cub3d.h"
 
 void	free_texture(s_texture *tex, s_game *g)
 {

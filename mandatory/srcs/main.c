@@ -6,11 +6,11 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 07:29:48 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 16:05:00 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:51:13 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "struct.h"
+#include "cub3d.h"
 
 int main(int argc, char **argv)
 {
