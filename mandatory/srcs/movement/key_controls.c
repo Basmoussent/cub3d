@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:32:26 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 12:00:39 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 13:02:38 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	ft_button(int keycode, s_game *game)
 		// free_game
 		exit(0);
 	}
+	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100)
+		move_player(game, keycode);
+	else if (keycode == 65361 || keycode == 65363)
+		rotate_camera(game, keycode);
 	return (0);
 }
-
-
 
 int	cross_close(s_game *game)
 {
@@ -43,4 +45,5 @@ void	key_controls(s_game *game)
 {
 	mlx_hook(game->win, 17, 0, cross_close, game);
 	mlx_hook(game->win, 2, 1L << 0, ft_button, game);
+	// gerer les key en continu
 }

@@ -11,6 +11,7 @@ CFLAGS = -Wall -Wextra -Werror -g3 -fPIE --sanitize=address
 SRCDIR = srcs
 EXECDIR = $(SRCDIR)/exec
 PARDIR = $(SRCDIR)/parsing
+MOVDIR = $(SRCDIR)/movement
 UTILDIR = $(SRCDIR)/utils
 
 
@@ -23,7 +24,8 @@ OBJDIR = objs
 SRCS =	$(SRCDIR)/main.c \
 		$(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c \
 		$(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
-		$(EXECDIR)/get_color.c $(EXECDIR)/key_controls.c \
+		$(EXECDIR)/get_color.c \
+		$(MOVDIR)/key_controls.c $(MOVDIR)/move_player.c $(MOVDIR)/rotate_camera.c \
 		$(UTILDIR)/free.c $(UTILDIR)/free_graphical.c
 
 OBJS = $(SRCS:.c=.o)
