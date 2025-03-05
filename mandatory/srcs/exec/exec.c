@@ -6,13 +6,13 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/04 22:26:04 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 09:49:20 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "struct.h" // a changer
 
-void	draw_textures(s_gqme *game, s_rayon *rayon, int x)
+int	get_textures(s_gqme *game, s_rayon *rayon, int *buffer, int x, int y)
 {
 	int		texX;
 	int		texY;
@@ -33,14 +33,14 @@ void	draw_textures(s_gqme *game, s_rayon *rayon, int x)
 		buffer[y][x] = texture[texNum][texHeight * texY + texX];
 		y++;
 	}
-// gerer avancee y + envoyer buffer + definir texHeight
+	return (y - 1)
+// definir texHeight (macro)
 }
 
-void	draw_wall(s_game *game, s_rayon *rayon, int x)
+void	get_color(s_game *game, s_rayon *rayon, int *buffer, int x)
 {
 	int	y;
 	int	color;
-	int	buffer[WIN_HEIGHT][WIN_WIDTH];
 // plutot que faire my mlx a chaque fois, creer un buffer qui stocke toutes les couleurs
 
 
@@ -48,12 +48,11 @@ void	draw_wall(s_game *game, s_rayon *rayon, int x)
 	while (y < WIN_HEIGHT)
 	{
 		if (y < rayon->draw_start)
-			buffer[y][x] = // couleur plafond
+			buffer[y][x] = game->tex->ceili_t; // couleur plafond
 		if (y >= rayon->draw_start && y <= rayon->draw_end)
-			color = draw_textures(game, rayon, x);// couleur mur, implementer textures;
+			y += get_textures(game, rayon, buffer, x, y); // textures murs
 		else
-			buffer[y][x] = // couleur sol
-		my_mlx_pixel_put(game->img, x, y, color);
+			buffer[y][x] = game->tex->floor_t; // couleur sol
 		y++;
 	}
 }
@@ -62,15 +61,16 @@ int	rendering(s_game *game)
 {
 	int	x;
 	s_rayon	*rayon;
+	int	buffer[WIN_HEIGHT][WIN_WIDTH];
 
 	x = 0;
 	while (x < WIN_WIDTH) // ou WIDTH
 	{
 		get_rayon_data(game, rayon, x);
-		draw_wall(game, rayon, x); // fonction test, mur bleu, reste noir
-		// fonction dessiner floor, ceiling et wall
+		get_color(game, rayon, buffer, x);
 		x++;
 	}
+	draw_buffer(game, buffer);
 }
 
 int	execution(s_game *game)
