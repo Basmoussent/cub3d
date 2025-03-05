@@ -20,7 +20,6 @@ int	rgb_to_hex(char *rgb)
 	int		b;
 
 	rgb_values = ft_split(rgb, ',');
-	free(rgb);
 	if (!rgb_values)
 		return (-1);
 	if (ft_size(rgb_values) != 3)
@@ -40,16 +39,17 @@ void parsing(s_game *g)
 	char	*line;
 	
 	line = get_next_line(g->tex->fd);
-	while(g->tex->loaded != 1)
+	while (line && g->tex->loaded != 1)
 	{
 		extract_texture(g, line);
+		free(line);
 		line = get_next_line(g->tex->fd);
 	}
 	while (line)
 	{
-		if (line == NULL)
-			break;
 		extract_line(g, line);
+		free(line);
 		line = get_next_line(g->tex->fd);
 	}
+	free(line);
 }

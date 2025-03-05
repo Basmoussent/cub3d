@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 16:45:53 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/12/26 23:24:35 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/05 12:43:13 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,7 @@ char	*get_next_line(int fd)
 {
 	char		*line;
 	static char	*buffer[1024];
-	int			i;
 
-	i = -1;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buffer[fd] = get_file(fd, buffer[fd]);

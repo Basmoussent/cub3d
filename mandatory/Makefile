@@ -6,7 +6,7 @@ NAME = ../cub3d
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3 -fPIE --sanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fPIE
 
 SRCDIR = srcs
 EXECDIR = $(SRCDIR)/exec

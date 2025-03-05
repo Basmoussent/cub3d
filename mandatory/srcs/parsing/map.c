@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:15:05 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/05 10:52:04 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:03:49 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	add_line_to_map(s_game *g, char *line, int i)
 		return ;
 	}
 	g->map = new_map;
-	g->map[i] = line;
+	g->map[i] = ft_strdup(line);
 	g->map[i + 1] = NULL;
 }
 
@@ -45,28 +45,26 @@ void check_case(s_game *g, char *line)
 }
 
 
-void	extract_line(s_game *g, char *line)
+void extract_line(s_game *g, char *line)
 {
-	int	i;
-	int	len;
-
-	i = 0;
-	//check_case(g, line);
-	len = ft_strlen(line);
-	if (len == 1 && line[0] == '\n')
-		return ;
-	ft_replace(line, " \t\n\r\v\f", '1');
-	if (g->map == NULL)
-	{
-		init_map(g, line);
-		return;
-	}
-	else
-	{
-		while (g->map[i] != NULL)
-			i++;
-		add_line_to_map(g, line, i);
-	}
+    int i = 0;
+    int len;
+    
+    len = ft_strlen(line);
+    if (len == 1 && line[0] == '\n')
+        return ;
+    ft_replace(line, " \t\n\r\v\f", '1');
+    if (g->map == NULL)
+    {
+        init_map(g, line);
+        return;
+    }
+    else
+    {
+        while (g->map[i] != NULL)
+            i++;
+        add_line_to_map(g, line, i);
+    }
 }
 
 void init_map(s_game * g, char * line)
@@ -77,7 +75,7 @@ void init_map(s_game * g, char * line)
 		free(line);
 		return ;
 	}
-	g->map[0] = line;
+	g->map[0] = ft_strdup(line);
 	g->map[1] = NULL;
 }
 
