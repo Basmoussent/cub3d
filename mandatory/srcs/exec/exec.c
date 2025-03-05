@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 10:51:28 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:03:10 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,23 @@ int	rendering(s_game *game)
 {
 	int	x;
 	s_rayon	*rayon;
-	int	buffer[WIN_HEIGHT][WIN_WIDTH];
+	int	**buffer;
 
 	x = 0;
-	rayon = ft_calloc(1, sizeof(s_rayon *));
+	rayon = ft_calloc(sizeof(s_rayon *), 1);
 	if (!rayon)
 		return (0);
+	buffer = ft_calloc(sizeof(int *), WIN_HEIGHT);
+	if (!buffer)
+		return (free(rayon), 0);
+	while (x < WIN_HEIGHT)
+	{
+		buffer[x] = ft_calloc(sizeof(int), WIN_WIDTH);
+	//	if (!buffer[x])
+			// return free
+		x++;
+	}
+	x = 0;
 	while (x < WIN_WIDTH)
 	{
 		get_rayon_data(game, rayon, x);

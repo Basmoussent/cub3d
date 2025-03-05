@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 10:51:47 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 11:04:42 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 		rayon->wall_dist = (rayon->map_x - game->p->pos_x + (1 - rayon->step_x) / 2) / rayon->dir_x;
 	else
 		rayon->wall_dist = (rayon->map_y - game->p->pos_y + (1 - rayon->step_y) / 2) / rayon->dir_y;
-	rayon->line_height = (int)(WIN_HEIGHT / wall_dist);
+	rayon->line_height = (int)(WIN_HEIGHT / rayon->wall_dist);
 	rayon->draw_start = -rayon->line_height / 2 + WIN_HEIGHT / 2;
 	if (rayon->draw_start < 0)
 		rayon->draw_start = 0;
@@ -71,9 +71,9 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 	if (rayon->draw_end >= WIN_HEIGHT)
 		rayon->draw_end = WIN_HEIGHT - 1;
 	if (rayon->side == 0)
-		rayon->wall_x = rayon->pos_y + rayon->wall_dist * rayon->dir_y;
+		rayon->wall_x = game->p->pos_y + rayon->wall_dist * rayon->dir_y;
 	else
-		rayon->wall_x = rayon->pos_x + rayon->wall_dist * rayon->dir_x;
+		rayon->wall_x = game->p->pos_x + rayon->wall_dist * rayon->dir_x;
 	rayon->wall_x = floor(rayon->wall_x);
 }
 
