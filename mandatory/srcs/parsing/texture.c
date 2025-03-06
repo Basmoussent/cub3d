@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:13:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/05 17:32:39 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 11:45:19 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void load_texture(s_game *g, char *file, char *val)
     if (!img)
     {
         printf("Error\nFailed to load texture: %s\n", file);
-        free_all(g);
+        free_all(g, 1);
         exit(1);
     }
 

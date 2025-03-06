@@ -25,7 +25,7 @@ typedef struct	 s_img {
 
 typedef struct t_texture {
 	char	*file;
-	int	 fd;
+	int		fd;
 	t_img	*no_t;
 	t_img	*so_t;
 	t_img	*we_t;
@@ -53,7 +53,7 @@ typedef struct t_game
 	s_player	*p;
 	s_texture	*tex;
 	t_img		*img;
-  int     *key_bool;
+	int			*key_bool;
 }	s_game;
 
 typedef struct t_rayon

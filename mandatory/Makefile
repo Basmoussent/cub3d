@@ -14,21 +14,19 @@ PARDIR = $(SRCDIR)/parsing
 MOVDIR = $(SRCDIR)/movement
 UTILDIR = $(SRCDIR)/utils
 
-
-
 INCDIR = ./include
 LIBFTDIR = ../libft
 MLXDIR = ../mlx
-OBJDIR = objs
+OBJDIR = build
 
-SRCS =	$(SRCDIR)/main.c \
-		$(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c \
-		$(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
-		$(EXECDIR)/get_color.c \
-		$(MOVDIR)/key_controls.c $(MOVDIR)/move_player.c $(MOVDIR)/rotate_camera.c \
-		$(UTILDIR)/free.c $(UTILDIR)/free_graphical.c
+SRCS = $(SRCDIR)/main.c \
+       $(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c $(PARDIR)/player.c \
+       $(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
+       $(EXECDIR)/get_color.c \
+       $(MOVDIR)/key_controls.c $(MOVDIR)/move_player.c $(MOVDIR)/rotate_camera.c \
+       $(UTILDIR)/free.c $(UTILDIR)/free_graphical.c
 
-OBJS = $(SRCS:.c=.o)
+OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 LIBFT = $(LIBFTDIR)/libft.a
 MLX = $(MLXDIR)/libmlx.a
@@ -41,15 +39,18 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -I include -o $(NAME)
 
-$(SRCDIR)/%.o: $(SRCDIR)/%.c
+$(OBJDIR)/%.o: %.c | $(OBJDIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR) $(OBJDIR)/$(SRCDIR) $(OBJDIR)/$(EXECDIR) $(OBJDIR)/$(PARDIR) $(OBJDIR)/$(MOVDIR) $(OBJDIR)/$(UTILDIR)
 
 $(LIBFT):
 	@$(MAKE) -C $(LIBFTDIR)
 
 clean:
 	@$(MAKE) -C $(LIBFTDIR) clean
-	$(RM) -f $(OBJS)
+	$(RM) -r $(OBJDIR)
 
 fclean: clean
 	@$(MAKE) -C $(LIBFTDIR) fclean

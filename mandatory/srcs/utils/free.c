@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/05 17:36:57 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 11:59:35 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void	free_texture(s_game *g)
 			mlx_destroy_image(g->mlx, g->tex->we_t);
 		if (g->tex->ea_t)
 			mlx_destroy_image(g->mlx, g->tex->ea_t);
+		if (g->img)
+			free(g->img);
+		if (g->tex->fd != -1)
+			close(g->tex->fd);
 		free(g->tex);
 	}
 }
@@ -53,7 +57,7 @@ void	free_player(s_player *p)
 		free(p);
 }
 
-void	free_all(s_game *g)
+void	free_all(s_game *g, int status)
 {
 	if (g)
 	{
@@ -74,5 +78,11 @@ void	free_all(s_game *g)
 			free(g->mlx);
 		}
 	}
-	exit(1);
+	exit(status);
+}
+
+void	print_error(char *msg)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
 }

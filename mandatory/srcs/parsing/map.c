@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:15:05 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/05 17:03:49 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 11:44:53 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,21 @@ void	add_line_to_map(s_game *g, char *line, int i)
 
 void check_case(s_game *g, char *line)
 {
-	int	y = 0;
-
+	int	y;
+	
+	y = 0;
 	while (line[y])
 	{
 		if (!(line[y] == '0' || line[y] == '1' || line[y] == 'N'
 			|| line[y] == 'S' || line[y] == 'E' || line[y] == 'W'))
 		{
-			printf("Error\n");
-			free_all(g);
+			free(line);
+			print_error("Unknown character encountered\n");
+			free_all(g, 1);
 		}
+		if ((line[y] == 'N' || line[y] == 'S'
+			|| line[y] == 'E' || line[y] == 'W'))
+			init_player(line[y], g, line, y);
 		y++;
 	}
 }
@@ -47,13 +52,15 @@ void check_case(s_game *g, char *line)
 
 void extract_line(s_game *g, char *line)
 {
-    int i = 0;
+    int i;
     int len;
     
-    len = ft_strlen(line);
+    i = 0;
+	len = ft_strlen(line);
     if (len == 1 && line[0] == '\n')
-        return ;
-    ft_replace(line, " \t\n\r\v\f", '1');
+		return ;
+	ft_replace(line, " \t\n\r\v\f", '1');
+	check_case(g, line);
     if (g->map == NULL)
     {
         init_map(g, line);
