@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 07:29:48 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 12:33:06 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:06:28 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void    init_game(s_game *g, char *file)
 {
-  	if (!init_graphical(g, g->img))
+  	if (!init_graphical(g))
 		return ;
 //        free_all(g, 127);
   	g->tex = ft_calloc(1, sizeof(s_texture));
