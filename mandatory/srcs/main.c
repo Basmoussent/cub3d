@@ -6,15 +6,14 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 07:29:48 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 12:26:19 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:33:06 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void    init_game(s_game *g, char *file, t_img *img)
+void    init_game(s_game *g, char *file)
 {
-	(void)img;
   	if (!init_graphical(g, g->img))
 		return ;
 //        free_all(g, 127);
@@ -27,7 +26,6 @@ void    init_game(s_game *g, char *file, t_img *img)
 	g->tex->ceili_t = -1;
 	g->p->dir_x = -2;
 	g->map = NULL;
-//	g->img = &img;
     if (g->tex->fd == -1)
     {
         print_error("Failed to open file");
@@ -43,8 +41,7 @@ int main(int argc, char **argv)
     if (argc != 2)
 		print_error("Usage: ./cub3d <map.cub>");
    	game.img = &img;
-    init_game(&game, argv[1], &img);
-   	//game.img = &img;
+    init_game(&game, argv[1]);
     parsing(&game);
     execution(&game);	
    // printf("texture Loaded: %d\n", game.tex->loaded);
