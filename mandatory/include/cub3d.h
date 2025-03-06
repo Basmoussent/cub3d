@@ -54,7 +54,7 @@ void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 //int		init_graphical(void	*mlx, void *win, t_img *img);
-int	init_graphical(s_game *game, t_img *img);
+int	init_graphical(s_game *game);
 
 // MOVEMENT
 

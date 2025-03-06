@@ -20,9 +20,8 @@ int	init_image(void *mlx, t_img *img)
 	return (1);
 }
 
-int	init_graphical(s_game *game, t_img *img)
+int	init_graphical(s_game *game)
 {
-	(void)img;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (0);
