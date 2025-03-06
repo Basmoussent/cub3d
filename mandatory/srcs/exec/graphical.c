@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphical.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:53:45 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 17:26:31 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:01:54 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,29 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 	*(unsigned int *) dst = color;
 }
 
-int	init_image(void *mlx, void *win, t_img *img)
+int	init_image(void *mlx, t_img *img)
 {
 	img->img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!img->img)
-		return (free_graphical(2, mlx, NULL, win), 0);  // free graphical a coder
+		return (1);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 		&img->line_length, &img->endian);
 	if (!img->addr)
-		return (free_graphical(3, mlx, img->img, win), 0);  // free graphical a coder
-	return (1);
+		return (1);
+	return (0);
 }
 
-int	init_graphical(void	*mlx, void *win, t_img *img)
+int	init_graphical(s_game *g)
 {
-	mlx = mlx_init();
-	if (!mlx)
-		return (0);
-	win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
-	if (!win)
-		return (free_graphical(1, mlx, NULL, NULL), 0);  // free graphical a coder
-	if (!init_image(mlx, win, img))
-		return (0);
-	return (1);
+	g->mlx = mlx_init();
+	g->img = ft_calloc(1, sizeof(t_img));
+	if (!g->mlx)
+		return (1);
+	g->win = mlx_new_window(g->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
+	if (!g->win)
+		return (free_graphical(1, g->mlx, NULL, NULL), 0);
+	if (!init_image(g->mlx, g->img))
+		free_all(g, 1);
+	return (0);
 }
 
