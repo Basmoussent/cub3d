@@ -6,18 +6,29 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 08:27:42 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 11:43:49 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:29:07 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_skip(char *str, char c)
+bool	is_in_charset(char c, const char *charset)
 {
-	int	i;
+    while (*charset)
+	{
+        if (c == *charset)
+            return (true);
+        charset++;
+    }
+    return (false);
+}
 
+char	*ft_skip(char *str, const char *charset)
+{
+    int	i;
+	
 	i = 0;
-	while(str[i] == c)
-		i++;
-	return (&str[i]);
+    while (str[i] && is_in_charset(str[i], charset))
+        i++;
+    return (&str[i]);
 }

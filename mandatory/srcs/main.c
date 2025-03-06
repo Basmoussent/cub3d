@@ -32,6 +32,7 @@ void	init_game(s_game *g, char *file)
 	g->tex->floor_t = -1;
 	g->tex->ceili_t = -1;
 	g->p->dir_x = -2;
+	g->p->plane_y = 0.66;
 }
 
 int main(int argc, char **argv)

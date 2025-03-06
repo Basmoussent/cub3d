@@ -12,20 +12,25 @@
 
 #include "cub3d.h"
 
-int	rgb_to_hex(char *rgb)
+int	rgb_to_hex(char **rgb, s_game *game, char *line)
 {
 	char	**rgb_values;
 	int		r;
 	int		g;
 	int		b;
-
-	rgb_values = ft_split(rgb, ',');
+	
+	rgb_values = ft_split(rgb[1], ',');
 	if (!rgb_values)
-		return (-1);
+	{
+		free((void **)rgb);
+		free(line);
+		free_all(game, 1);
+	}
 	if (ft_size(rgb_values) != 3)
 	{
-		free_tab((void **)rgb_values);
-		return (-1);
+		free((void **)rgb);
+		free(line);
+		free_all(game, 1);
 	}
 	r = ft_atoi(rgb_values[0]);
 	g = ft_atoi(rgb_values[1]);
@@ -51,5 +56,6 @@ void parsing(s_game *g)
 		free(line);
 		line = get_next_line(g->tex->fd);
 	}
+	check_surrounded_by_walls(g);
 	free(line);
 }

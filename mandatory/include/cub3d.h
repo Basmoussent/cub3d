@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 12:55:17 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 16:01:03 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void 	parsing(s_game *g);
 void 	extract_texture(s_game *g, char *line);
 void 	extract_line(s_game *g, char *line);
 void 	init_map(s_game *g, char *line);
-int		rgb_to_hex(char *rgb);
+int		rgb_to_hex(char **rgb, s_game *g, char *line);
 void	free_all(s_game *g, int status);
-
+void check_surrounded_by_walls(s_game *g);
 // EXEC
 
 // exec.c

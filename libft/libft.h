@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:54:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 13:05:12 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 14:29:28 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdbool.h>
 # include "get_next_line_bonus.h"
 
 typedef struct s_list
@@ -63,7 +64,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n);
 void	free_tab(void **tab);
 int		occur(const char *str, char c);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-char	*ft_skip(char *str, char c);
+char	*ft_skip(char *str, const char *charset);
 int		ft_size(char **array);
 void	ft_replace(char *str, const char *charset, char replace_char);
 
