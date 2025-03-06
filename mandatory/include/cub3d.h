@@ -42,7 +42,7 @@ void	free_all(s_game *g, int status);
 
 // exec.c
 int	rendering(s_game *game);
-int	execution(s_game *game);
+int	execution(s_game *game, t_img *img);
 
 // get_color.c
 void	get_color(s_game *game, s_rayon *rayon, int **buffer, int x);
@@ -52,7 +52,9 @@ void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
 
 // graphical.c
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int		init_graphical(s_game *g);
+
+//int		init_graphical(void	*mlx, void *win, t_img *img);
+int	init_graphical(s_game *game, t_img *img);
 
 // MOVEMENT
 

@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   graphical.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/04 14:53:45 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 12:01:54 by bdenfir          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "cub3d.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
@@ -32,17 +20,16 @@ int	init_image(void *mlx, t_img *img)
 	return (0);
 }
 
-int	init_graphical(s_game *g)
+int	init_graphical(s_game *game, t_img *img)
 {
-	g->mlx = mlx_init();
-	g->img = ft_calloc(1, sizeof(t_img));
-	if (!g->mlx)
-		return (1);
-	g->win = mlx_new_window(g->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
-	if (!g->win)
-		return (free_graphical(1, g->mlx, NULL, NULL), 0);
-	if (!init_image(g->mlx, g->img))
-		free_all(g, 1);
-	return (0);
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		return (0);
+	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
+	if (!game->win)
+		return (free_graphical(1, game->mlx, NULL, NULL), 0);  // free graphical a coder
+	if (!init_image(game->mlx, game->win, img))
+		return (0);
+	return (1);
 }
 

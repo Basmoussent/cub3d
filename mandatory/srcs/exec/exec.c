@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 11:56:54 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:06:03 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ int draw_buffer(s_game *game, int **buffer)
   int y;
 
   y = 0;
-  while (y < WIN_WIDTH)
+  while (y < WIN_HEIGHT)
   {
     x = 0;
-    while (x < WIN_HEIGHT)
+    while (x < WIN_WIDTH)
     {
-      my_mlx_pixel_put(game->img, x, y, buffer[y][x]);
+	  my_mlx_pixel_put(game->img, x, y, buffer[y][x]);
       x++;
     }
     y++;
   }
-  mlx_put_image_to_window(game->mlx, game->win, game->img->img, x, y);
+  mlx_put_image_to_window(game->mlx, game->win, game->img->img, 1, 1);
   return (1);
 }
 
@@ -39,7 +39,7 @@ int	rendering(s_game *game)
 	int	**buffer;
 
 	x = 0;
-	rayon = ft_calloc(sizeof(s_rayon *), 1);
+	rayon = ft_calloc(sizeof(s_rayon), 1);
 	if (!rayon)
 		return (0);
 	buffer = ft_calloc(sizeof(int *), WIN_HEIGHT);
@@ -61,17 +61,15 @@ int	rendering(s_game *game)
 	}
 	draw_buffer(game, buffer);
 //  free buffer
-  free(rayon);
+	free(rayon);
 	return (1);
 }
 
-int	execution(s_game *game)
+int	execution(s_game *game, t_img *img)
 {
-	if (!init_graphical(game->mlx, game->win, game->img))
-		return (0);
+	game->img = img;
 	rendering(game);
-	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 1, 1);
-	key_controls(game);
+//	key_controls(game);
 	mlx_loop(game->mlx);
 	return (1);
 }

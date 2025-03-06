@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 11:04:42 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 11:04:49 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ static void	dda(s_game *game, s_rayon *rayon)
 			rayon->map_y += rayon->step_y;
 			rayon->side = 1;
 		}
-		if (game->map[rayon->map_x][rayon->map_y] == 1)
+	//	printf("map x = %d , map y = %d\n", rayon->map_x, rayon->map_y);
+		if (game->map[rayon->map_y][rayon->map_x] == '1')
 			break ;
 	}
 }
@@ -79,8 +80,10 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 
 void	get_rayon_data(s_game *game, s_rayon *rayon, int x)
 {
+//	printf("p->dir x = %f, p->dir_y = %f, plane x = %f, plane y = %f\n", game->p->dir_x, game->p->dir_y, game->p->plane_x, game->p->plane_y);
 	// Calculating the ray direction
 	rayon->camera_x = 2 * x / (double)WIN_WIDTH - 1;
+//	printf("camera x = %f\n", rayon->camera_x);
 	rayon->dir_x = game->p->dir_x + game->p->plane_x * rayon->camera_x;	
 	rayon->dir_y = game->p->dir_y + game->p->plane_y * rayon->camera_x;	
 
