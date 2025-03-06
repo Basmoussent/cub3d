@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 11:57:35 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:18:34 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	free_all(s_game *g, int status);
 
 // exec.c
 int	rendering(s_game *game);
-int	execution(s_game *game, t_img *img);
+int	execution(s_game *game);
 
 // get_color.c
 void	get_color(s_game *game, s_rayon *rayon, int **buffer, int x);

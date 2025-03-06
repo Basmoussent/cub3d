@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 12:06:03 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:18:06 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ int	rendering(s_game *game)
 	return (1);
 }
 
-int	execution(s_game *game, t_img *img)
+int	execution(s_game *game)
 {
-	game->img = img;
 	rendering(game);
 //	key_controls(game);
 	mlx_loop(game->mlx);

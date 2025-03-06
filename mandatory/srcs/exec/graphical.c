@@ -12,23 +12,24 @@ int	init_image(void *mlx, t_img *img)
 {
 	img->img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!img->img)
-		return (1);
+		return (0);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 		&img->line_length, &img->endian);
 	if (!img->addr)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }
 
 int	init_graphical(s_game *game, t_img *img)
 {
+	(void)img;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (0);
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	if (!game->win)
 		return (free_graphical(1, game->mlx, NULL, NULL), 0);  // free graphical a coder
-	if (!init_image(game->mlx, game->win, img))
+	if (!init_image(game->mlx, game->img))
 		return (0);
 	return (1);
 }
