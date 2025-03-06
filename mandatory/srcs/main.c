@@ -26,7 +26,7 @@ void	init_game(s_game *g, char *file)
 		print_error("Failed to open file\n");
 		free_all(g, 127);
 	}
-	if (!init_graphical(g, g->img))
+	if (!init_graphical(g))
 		free_all(g, 1);
   	
 	g->tex->floor_t = -1;

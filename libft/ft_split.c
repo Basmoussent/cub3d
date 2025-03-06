@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:13:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 13:07:14 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:28:57 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_tab(void **tab)
 	while (tab[i])
 	{
 		free(tab[i]);
-		tab[i] == NULL;
+		tab[i] = NULL;
 		i++;
 	}
 	free(tab);
