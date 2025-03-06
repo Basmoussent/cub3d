@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*									  */
 /*							:::	 ::::::::   */
-/*   main.c			:+:   :+:	:+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*						  +:+ +:+	   +:+	*/
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+	*/
 /*						+#+#+#+#+#+   +#+	 */
 /*   Created: 2025/03/04 07:29:48 by bdenfir		   #+#  #+#		  */
-/*   Updated: 2025/03/06 12:38:23 by bdenfir		  ###   ########.fr	*/
+/*   Updated: 2025/03/06 23:12:29 by agozlan          ###   ########.fr       */
 /*									  */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int main(int argc, char **argv)
 		game.img = &img;
 		init_game(&game, argv[1]);
 		parsing(&game);
+	//	printf("player : pos x = %f, pos y = %f, dir x = %f, dir y = %f, plane x = %f, plane y = %f\n\n", game.p->pos_x, game.p->pos_y, game.p->dir_x, game.p->pos_y, game.p->plane_x, game.p->plane_y);
 		execution(&game);	
 		free_all(&game, 0);
 	}

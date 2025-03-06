@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:31:22 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/05 13:02:08 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 22:55:19 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@ To rotate a vactor, simply multiply it with the rotation matrix
 
 void	rotation(s_game *game, int index, int a)
 {
-  while (game->key_bool[index] == 1)
-  {
+	(void)index;
+//  while (game->key_bool[index] == 1)
+//  {
 	  game->p->dir_x *= a;
 	  game->p->dir_y *= a;
 	  game->p->plane_x *= a;
 	  game->p->plane_y *= a;
     rendering(game);
-    usleep(200); // aleatoire
-  }
+  //  usleep(200); // aleatoire
+//  }
 }
 
 void	rotate_camera(s_game *game, int keycode)

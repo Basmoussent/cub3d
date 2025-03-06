@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 11:02:16 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 22:47:25 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x, int y)
 	(void)game;
 	while (y < rayon->draw_end)
 	{
-		buffer[y][x] = 255;
+		if (rayon->side)
+			buffer[y][x] = 255;
+		else
+			buffer[y][x] = 3277055;
 		y++;
 	}
 	return (y - 1);
