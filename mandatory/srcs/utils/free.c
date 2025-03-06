@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 11:59:35 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:22:19 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,12 @@ void	free_texture(s_game *g)
 			mlx_destroy_image(g->mlx, g->tex->we_t);
 		if (g->tex->ea_t)
 			mlx_destroy_image(g->mlx, g->tex->ea_t);
-		if (g->img)
-			free(g->img);
 		if (g->tex->fd != -1)
 			close(g->tex->fd);
 		free(g->tex);
 	}
 }
 
-void free_map(s_game *g)
-{
-    int i;
-    
-    if (!g || !g->map)
-        return;
-        
-    i = 0;
-    while (g->map[i])
-    {
-        free(g->map[i]);
-        g->map[i] = NULL;
-        i++;
-    }
-    free(g->map);
-    g->map = NULL;
-}
 void	free_player(s_player *p)
 {
 	if (p)
@@ -59,9 +40,10 @@ void	free_player(s_player *p)
 
 void	free_all(s_game *g, int status)
 {
+	char	*line;
+	
 	if (g)
 	{
-		char *line;
 		
 		line = get_next_line(g->tex->fd);
 		while (line)
@@ -69,11 +51,13 @@ void	free_all(s_game *g, int status)
 			free(line);
 			line = get_next_line(g->tex->fd);
 		}
-		free_map(g);
+		free_tab((void **)g->map);
 		free_player(g->p);
 		free_texture(g);
 		if (g->mlx)
 		{
+			mlx_destroy_image(g->mlx, g->img->img);
+			mlx_destroy_window(g->mlx, g->win);
 			mlx_destroy_display(g->mlx);
 			free(g->mlx);
 		}

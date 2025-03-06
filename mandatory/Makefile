@@ -24,7 +24,7 @@ SRCS = $(SRCDIR)/main.c \
        $(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
        $(EXECDIR)/get_color.c \
        $(MOVDIR)/key_controls.c $(MOVDIR)/move_player.c $(MOVDIR)/rotate_camera.c \
-       $(UTILDIR)/free.c $(UTILDIR)/free_graphical.c
+       $(UTILDIR)/free.c $(UTILDIR)/free_graphical.c $(UTILDIR)/utils.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

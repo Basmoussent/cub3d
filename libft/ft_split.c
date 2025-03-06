@@ -6,22 +6,23 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:13:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2024/11/16 15:23:16 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:07:14 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_tab(char **tab)
+void	free_tab(void **tab)
 {
 	int	i;
 
-	i = 0;
 	if (!tab)
-		return ;
+		return;
+	i = 0;
 	while (tab[i])
 	{
 		free(tab[i]);
+		tab[i] == NULL;
 		i++;
 	}
 	free(tab);
@@ -97,7 +98,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	if (fill_rslt(rslt, s, c) == 1)
 	{
-		free_tab(rslt);
+		free_tab((void **)rslt);
 		return (NULL);
 	}
 	return (rslt);

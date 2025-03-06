@@ -28,7 +28,7 @@ int	init_graphical(s_game *game, t_img *img)
 		return (0);
 	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	if (!game->win)
-		return (free_graphical(1, game->mlx, NULL, NULL), 0);  // free graphical a coder
+		return (free_all(game, 1), 1);
 	if (!init_image(game->mlx, game->img))
 		return (0);
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 12:18:34 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 12:55:17 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	rotate_camera(s_game *game, int keycode);
 
 // free.c
 void	print_error(char *msg);
+int		ca_triche(s_game *g);
 
 // player.c
 void	init_player(char c, s_game *g, char *line, int x);

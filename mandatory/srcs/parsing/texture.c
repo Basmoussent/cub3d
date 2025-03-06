@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:13:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 11:45:19 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:06:08 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void load_texture(s_game *g, char *file, char *val)
     {
         printf("Error\nFailed to load texture: %s\n", file);
         free_all(g, 1);
-        exit(1);
     }
 
     if (strcmp(val, "NO") == 0)
@@ -72,9 +71,9 @@ void extract_texture(s_game *g, char *line)
 	size = ft_size(tmp);
 	if (size != 2)
 	{
-		free_tab(tmp);
+		free_tab((void **)tmp);
 		return ;
 	}
 	parse_texture(tmp, g);
-	free_tab(tmp);
+	free_tab((void **)tmp);
 }

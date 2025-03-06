@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:54:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/04 13:24:35 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:05:12 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *str, char c);
 char	*ft_strtrim(char const *s1, char const *set);
 void	*ft_memmove(void *dest, const void *src, size_t n);
-void	free_tab(char **tab);
+void	free_tab(void **tab);
 int		occur(const char *str, char c);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_skip(char *str, char c);

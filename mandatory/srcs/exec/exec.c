@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 12:18:06 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/06 13:06:21 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	rendering(s_game *game)
 		x++;
 	}
 	draw_buffer(game, buffer);
-//  free buffer
+	free_tab((void **)buffer);
 	free(rayon);
 	return (1);
 }
@@ -69,6 +69,7 @@ int	execution(s_game *game)
 {
 	rendering(game);
 //	key_controls(game);
+	mlx_hook(game->win, 17, 0, ca_triche, game);
 	mlx_loop(game->mlx);
 	return (1);
 }
