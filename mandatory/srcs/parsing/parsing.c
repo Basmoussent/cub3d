@@ -24,13 +24,13 @@ int	rgb_to_hex(char *rgb)
 		return (-1);
 	if (ft_size(rgb_values) != 3)
 	{
-		free_tab(rgb_values);
+		free_tab((void **)rgb_values);
 		return (-1);
 	}
 	r = ft_atoi(rgb_values[0]);
 	g = ft_atoi(rgb_values[1]);
 	b = ft_atoi(rgb_values[2]);
-	free_tab(rgb_values);
+	free_tab((void **)rgb_values);
 	return (r << 16 | g << 8 | b);
 }
 
