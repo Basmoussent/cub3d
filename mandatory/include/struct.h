@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   struct.h										   :+:	  :+:	:+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/05 10:54:23 by agozlan		  ###   ########.fr	   */
+/*   Updated: 2025/03/06 10:01:32 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -36,15 +36,12 @@ typedef struct t_texture {
 }	s_texture;
 
 typedef struct t_player {
-	int 	pos_x; // px
-	int		pos_y; // py
-	int		dir_x; // pdx
-	int 	dir_y; // pdy
+	double 	pos_x; // px
+	double	pos_y; // py
+	double	dir_x; // pdx
+	double 	dir_y; // pdy
 	double	plane_x; // surement 0
 	double	plane_y; // surement 0.66
-  
-  // basem -> si t'en as pas besoin enleve la
-  double  pa;
 } s_player;
 
 
