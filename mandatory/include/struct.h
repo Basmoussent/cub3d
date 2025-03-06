@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   struct.h                                           :+:      :+:    :+:   */
+/*   struct.h										   :+:	  :+:	:+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/05 10:54:23 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 10:54:23 by agozlan		  ###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+typedef struct	 s_img {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+	int		width;
+	int		height;
+}	t_img;
+
 typedef struct t_texture {
-    char    *file;
-    int     fd;
-	void	*no_t;
-	void	*so_t;
-	void	*we_t;
-	void	*ea_t;
+	char	*file;
+	int	 fd;
+	t_img	*no_t;
+	t_img	*so_t;
+	t_img	*we_t;
+	t_img	*ea_t;
 	int		floor_t;
 	int		ceili_t;
-    int     loaded;
+	int	 loaded;
 }	s_texture;
 
 typedef struct t_player {
@@ -33,18 +43,10 @@ typedef struct t_player {
 	double	plane_x; // surement 0
 	double	plane_y; // surement 0.66
   
-  // basem
+  // basem -> si t'en as pas besoin enleve la
   double  pa;
 } s_player;
 
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
-}	t_img;
 
 typedef struct t_game
 {

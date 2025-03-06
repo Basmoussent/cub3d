@@ -3,45 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:13:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/05 10:52:18 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/05 17:32:39 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
 void load_texture(s_game *g, char *file, char *val)
 {
-    void *texture;
-	int	size;
-	
-	size = 100;
-	texture= mlx_xpm_file_to_image(g->mlx, file, &size, &size);
-    if (strcmp(val, "NO") == 0)
-        g->tex->no_t = texture;
-    else if (strcmp(val, "SO") == 0)
-        g->tex->so_t = texture;
-    else if (strcmp(val, "WE") == 0)
-        g->tex->we_t = texture;
-    else if (strcmp(val, "EA") == 0)
-        g->tex->ea_t = texture;
-}
+    int width;
+    int height;
+    void *img;
 
+	if (file[strlen(file) - 1] == '\n')
+		file[strlen(file) - 1] = '\0';
+	img = mlx_xpm_file_to_image(g->mlx, file, &width, &height);
+    if (!img)
+    {
+        printf("Error\nFailed to load texture: %s\n", file);
+        free_all(g);
+        exit(1);
+    }
+
+    if (strcmp(val, "NO") == 0)
+        g->tex->no_t = img;
+    else if (strcmp(val, "SO") == 0)
+        g->tex->so_t = img;
+    else if (strcmp(val, "WE") == 0)
+        g->tex->we_t = img;
+    else if (strcmp(val, "EA") == 0)
+        g->tex->ea_t = img;
+}
 
 void parse_texture(char **tmp, s_game *g)
 {
+	if (!g->mlx)
+		return;
 	
 	if (tmp[0] && ft_strncmp(tmp[0], "NO", 3) == 0 && tmp[1])
-		g->tex->no_t = tmp[1];
+		load_texture(g, tmp[1], "NO");
 	if (tmp[0] && ft_strncmp(tmp[0], "SO", 3) == 0 && tmp[1])
-		g->tex->so_t = tmp[1];
+		load_texture(g, tmp[1], "SO");
 	if (tmp[0] && ft_strncmp(tmp[0], "WE", 3) == 0 && tmp[1])
-		g->tex->we_t = tmp[1];
+		load_texture(g, tmp[1], "WE");
 	if (tmp[0] && ft_strncmp(tmp[0], "EA", 3) == 0 && tmp[1])
-		g->tex->ea_t = tmp[1];
+		load_texture(g, tmp[1], "EA");
 	if (tmp[0] && ft_strncmp(tmp[0], "F", 2) == 0 && tmp[1])
 		g->tex->floor_t = rgb_to_hex(tmp[1]);
 	if (tmp[0] && ft_strncmp(tmp[0], "C", 2) == 0 && tmp[1])
@@ -67,4 +76,5 @@ void extract_texture(s_game *g, char *line)
 		return ;
 	}
 	parse_texture(tmp, g);
+	free_tab(tmp);
 }

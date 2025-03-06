@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
 /*   Updated: 2025/03/05 12:35:44 by agozlan          ###   ########.fr       */
@@ -52,7 +52,7 @@ void	get_rayon_data(s_game *game, s_rayon *rayon, int x);
 
 // graphical.c
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int	init_graphical(void	*mlx, void *win, t_img *img);
+int		init_graphical(void	*mlx, void *win, t_img *img);
 
 // MOVEMENT
 
