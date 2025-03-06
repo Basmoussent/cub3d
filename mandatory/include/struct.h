@@ -56,6 +56,7 @@ typedef struct t_game
 	s_player	*p;
 	s_texture	*tex;
 	t_img		*img;
+  int     *key_bool;
 }	s_game;
 
 typedef struct t_rayon
