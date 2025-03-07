@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:32:26 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 22:56:40 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:07:50 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void upd_key_bool(int keycode, s_game *game, int x)
 {
-  if (keycode == 119)
+  if (keycode == W)
     game->key_bool[0] = x;
-  if (keycode == 115)
+  if (keycode == S)
     game->key_bool[1] = x;
-  if (keycode == 97)
+  if (keycode == A)
     game->key_bool[2] = x;
-  if (keycode == 100)
+  if (keycode == D)
     game->key_bool[3] = x;
-  if (keycode == 65361)
+  if (keycode == LEFT)
     game->key_bool[4] = x;
-  if (keycode == 65363)
+  if (keycode == RIGHT)
     game->key_bool[5] = x;
 }
 
@@ -36,13 +36,16 @@ int ft_release(int keycode, s_game *game)
 
 int	ft_button(int keycode, s_game *game)
 {
-	if (keycode == 65307)
+
+	if (keycode == ESC)
 		free_all(game, 0);
-//  	upd_key_bool(keycode, game, 1);
-	if (keycode == 119 || keycode == 115 || keycode == 97 || keycode == 100)
+	upd_key_bool(keycode, game, 1);
+/*	
+	if (keycode == W || keycode == S || keycode == A || keycode == D)
 		move_player(game, keycode);
-	else if (keycode == 65361 || keycode == 65363)
+	else if (keycode == LEFT || keycode == RIGHT)
 		rotate_camera(game, keycode);
+*/
 	return (0);
 }
 
@@ -56,6 +59,7 @@ void	key_controls(s_game *game)
 {
 	mlx_hook(game->win, 17, 0, cross_close, game);
 	mlx_hook(game->win, 2, 1L << 0, ft_button, game);
-//	mlx_hook(game->win, 2, 1L << 1, ft_release, game);
+	mlx_hook(game->win, 3, 1L << 1, ft_release, game);
 	// gerer les key en continu
+	// mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
 }

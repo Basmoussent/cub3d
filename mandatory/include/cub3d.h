@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/07 11:04:10 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/07 15:51:38 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # define texHeight 64
 
 #define	ROTSPEED 0.015
-#define	MOVESPEED 0.0125
+#define	MOVESPEED 0.125
 
 // PARSING
 void 	parsing(s_game *g);
@@ -65,10 +65,10 @@ int	init_graphical(s_game *game);
 void	key_controls(s_game *game);
 
 // move_player.c
-void	move_player(s_game *game, int keycode);
+void	move_player(s_game *game);
 
 // rotate_camera.c
-void	rotate_camera(s_game *game, int keycode);
+void	rotate_camera(s_game *game);
 
 // free.c
 void	print_error(char *msg);
