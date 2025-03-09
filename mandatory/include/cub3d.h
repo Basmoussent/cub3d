@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 16:41:10 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/09 19:26:10 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@
 # include <unistd.h>
 
 #define WIN_WIDTH 1920
-#define WIN_HEIGHT 1080   // A verifier
+#define WIN_HEIGHT 1080
 
 # define WIDTH 100
 # define HEIGHT 100
 
 # define texWidth 64       // a adapter
 # define texHeight 64
+
+#define	ROTSPEED 0.015
+#define	MOVESPEED 0.125
 
 // PARSING
 void 	parsing(s_game *g);
@@ -63,10 +66,10 @@ int	init_graphical(s_game *game);
 void	key_controls(s_game *game);
 
 // move_player.c
-void	move_player(s_game *game, int keycode);
+void	move_player(s_game *game);
 
 // rotate_camera.c
-void	rotate_camera(s_game *game, int keycode);
+void	rotate_camera(s_game *game);
 
 // free.c
 void	print_error(char *msg);

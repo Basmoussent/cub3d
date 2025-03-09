@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/06 10:01:32 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/07 16:07:42 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct t_game
 	s_player	*p;
 	s_texture	*tex;
 	t_img		*img;
-	int			*key_bool;
+	int			key_bool[6];
 }	s_game;
 
 typedef struct t_rayon

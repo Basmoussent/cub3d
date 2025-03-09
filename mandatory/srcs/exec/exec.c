@@ -6,11 +6,24 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 14:15:55 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/09 19:26:36 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+// test
+void	free_buffer(int **buffer)
+{
+	int	y;
+	y = 0;
+	while (y < WIN_HEIGHT)
+	{
+		free(buffer[y]);
+		y++;
+	}
+	free(buffer);
+}
 
 int draw_buffer(s_game *game, int **buffer)
 {
@@ -70,16 +83,33 @@ int	rendering(s_game *game)
 		x++;
 	}
 	draw_buffer(game, buffer);
-	free_tab((void **)buffer);
+	free_buffer(buffer);
 	free(rayon);
 	return (1);
 }
 
+int	update_game(s_game *game)
+{
+	if (game->key_bool[0] || game->key_bool[1] || game->key_bool[2] || game->key_bool[3] || game->key_bool[4] || game->key_bool[5])
+	{
+		move_player(game);
+		rotate_camera(game);
+		rendering(game);
+	}
+	return (0);
+}
+
 int	execution(s_game *game)
 {
+	game->key_bool[0] = 0;
+	game->key_bool[1] = 0;
+	game->key_bool[2] = 0;
+	game->key_bool[3] = 0;
+	game->key_bool[4] = 0;
+	game->key_bool[5] = 0;
 	rendering(game);
 	key_controls(game);
-	mlx_hook(game->win, 17, 0, ca_triche, game);
+//	mlx_hook(game->win, 17, 0, ca_triche, game);
 	mlx_loop(game->mlx);
 	return (1);
 }
