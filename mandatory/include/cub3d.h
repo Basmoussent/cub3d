@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/07 16:20:03 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/09 16:30:07 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@
 # define WIDTH 100
 # define HEIGHT 100
 
-# define texWidth 64       // a adapter
-# define texHeight 64
-
-#define	ROTSPEED 0.05
+#define	ROTSPEED 0.1
 #define	MOVESPEED 0.125
 
 // PARSING
