@@ -12,45 +12,6 @@
 
 #include "cub3d.h"
 
-int is_enclosed(s_game *g, int y, int x)
-{
-	if (g->map[y][x] == '1') 
-		return (1);
-	if (g->map[y][x] == ' ')
-		return (0);
-	if (y == 0 || !g->map[y + 1] || x == 0 || g->map[y][x + 1] == '\0')
-		return (0);
-
-	if (g->map[y - 1][x] == ' ' || g->map[y + 1][x] == ' ' ||
-		g->map[y][x - 1] == ' ' || g->map[y][x + 1] == ' ')
-		return (0);
-	return (1);
-}
-
-/* Ensure the map is enclosed by walls */
-void	check_surrounded_by_walls(s_game *g)
-{
-	int	y;
-	int	x;
-
-	for (y = 0; g->map[y]; y++)
-	{
-		for (x = 0; g->map[y][x]; x++)
-		{
-			if (g->map[y][x] == '0' || g->map[y][x] == 'N' ||
-				g->map[y][x] == 'S' || g->map[y][x] == 'E' ||
-				g->map[y][x] == 'W')
-			{
-				if (!is_enclosed(g, y, x))
-				{
-					print_error("Map is not enclosed by walls\n");
-					free_all(g, 1);
-				}
-			}
-		}
-	}
-}
-
 void	add_line_to_map(s_game *g, char *line, int i)
 {
 	char	**new_map;
@@ -75,7 +36,7 @@ void check_case(s_game *g, char *line)
 	while (line[y])
 	{
 		if (!(line[y] == '0' || line[y] == '1' || line[y] == 'N'
-			|| line[y] == 'S' || line[y] == 'E' || line[y] == 'W'))
+			|| line[y] == 'S' || line[y] == 'E' || line[y] == 'W' || line[y] == ' '))
 		{
 			printf("character - %c\n", line[y]);
 			free(line);
@@ -90,7 +51,7 @@ void check_case(s_game *g, char *line)
 }
 
 
-void extract_line(s_game *g, char *line)
+void extract_line(s_game *g, char *line, int *end)
 {
 	int i;
 	int len;
@@ -99,7 +60,9 @@ void extract_line(s_game *g, char *line)
 	len = ft_strlen(line);
 	if (len == 1 && line[0] == '\n')
 		return ;
-	ft_replace(line, " \t\n\r\v\f", '1');
+	if (line[len - 1] == '\n')
+		line[len - 1] = '\0';
+	end++;
 	check_case(g, line);
 	if (g->map == NULL)
 	{
@@ -126,5 +89,30 @@ void init_map(s_game * g, char *line)
 	g->map[1] = NULL;
 }
 
+void	check_surrounded_by_walls(s_game *g)
+{
+	int	i;
+	int	j;
 
+	i = 0;
+	while (g->map[i])
+	{
+		j = 0;
+		while (g->map[i][j])
+		{
+			if (g->map[i][j] == '0' || g->map[i][j] == 'N' || g->map[i][j] == 'S' ||
+				g->map[i][j] == 'E' || g->map[i][j] == 'W')
+			{
+				if (check_adjacent(g, i, j))
+				{
+					print_error("Map is not properly enclosed by walls\n");
+					free_all(g, 1);
+				}
+				ft_replace(g->map[i], " \t\n\r\v\f", '1');
+			}
+			j++;
+		}
+		i++;
+	}
+}
 

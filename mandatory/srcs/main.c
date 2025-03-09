@@ -48,6 +48,11 @@ int main(int argc, char **argv)
 		game.img = &img;
 		init_game(&game, argv[1]);
 		parsing(&game);
+		if (game.p->dir_x == -2)
+		{
+			print_error("Player not found\n");
+			free_all(&game, 1);
+		}
 	//	printf("player : pos x = %f, pos y = %f, dir x = %f, dir y = %f, plane x = %f, plane y = %f\n\n", game.p->pos_x, game.p->pos_y, game.p->dir_x, game.p->pos_y, game.p->plane_x, game.p->plane_y);
 		execution(&game);	
 		free_all(&game, 0);
