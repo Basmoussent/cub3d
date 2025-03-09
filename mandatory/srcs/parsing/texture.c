@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:13:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 14:44:18 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/09 16:28:57 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void load_texture(s_game *g, char **file, char *val, char *line)
 {
-    int width;
-    int height;
-    void *img;
+    t_img *img;
 
+	img = malloc(sizeof(t_img));
+	if (!img)
+    {
+        free_tab((void **)file);
+		free(line);
+		print_error("Malloc fail\n");
+        free_all(g, 1);
+	}
 	if (file[1][strlen(file[1]) - 1] == '\n')
 		file[1][strlen(file[1]) - 1] = '\0';
 	if (!(file[1] && ft_strlen(file[1]) >= 4
@@ -28,14 +34,25 @@ void load_texture(s_game *g, char **file, char *val, char *line)
 		print_error("Texture arent in .xpm format\n");
 		free_all(g, 1);
 	}
-	img = mlx_xpm_file_to_image(g->mlx, file[1], &width, &height);
-    if (!img)
+	img->img = mlx_xpm_file_to_image(g->mlx, file[1], &img->width, &img->height);
+    if (!img->img)
     {
         free_tab((void **)file);
 		free(line);
+		free(img);
 		print_error("Failed to load texture\n");
         free_all(g, 1);
-    }
+	}
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	if (!img->addr)
+    {
+        free_tab((void **)file);
+		free(line);
+		mlx_destroy_image(g->mlx, img->img);
+		free(img);
+		print_error("Failed to load texture\n");
+        free_all(g, 1);
+	}
     if (strcmp(val, "NO") == 0)
         g->tex->no_t = img;
     else if (strcmp(val, "SO") == 0)

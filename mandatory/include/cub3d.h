@@ -27,10 +27,7 @@
 # define WIDTH 100
 # define HEIGHT 100
 
-# define texWidth 64       // a adapter
-# define texHeight 64
-
-#define	ROTSPEED 0.015
+#define	ROTSPEED 0.1
 #define	MOVESPEED 0.125
 
 // PARSING
