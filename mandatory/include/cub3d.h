@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 16:01:03 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/09 16:41:10 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 # include "mlx.h"
-# include "libft.h"
+# include "../../libft/libft.h"
 # include "struct.h"
 # include <math.h>
 # include <stdlib.h>
@@ -33,11 +33,12 @@
 // PARSING
 void 	parsing(s_game *g);
 void 	extract_texture(s_game *g, char *line);
-void 	extract_line(s_game *g, char *line);
+void 	extract_line(s_game *g, char *line, int *end);
 void 	init_map(s_game *g, char *line);
 int		rgb_to_hex(char **rgb, s_game *g, char *line);
 void	free_all(s_game *g, int status);
-void check_surrounded_by_walls(s_game *g);
+void	check_surrounded_by_walls(s_game *g);
+
 // EXEC
 
 // exec.c
@@ -70,6 +71,7 @@ void	rotate_camera(s_game *game, int keycode);
 // free.c
 void	print_error(char *msg);
 int		ca_triche(s_game *g);
+int		check_adjacent(s_game *g, int i, int j);
 
 // player.c
 void	init_player(char c, s_game *g, char *line, int x);
