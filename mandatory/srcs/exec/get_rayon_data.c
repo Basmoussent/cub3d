@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/06 11:04:49 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/09 16:14:26 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 		rayon->wall_x = game->p->pos_y + rayon->wall_dist * rayon->dir_y;
 	else
 		rayon->wall_x = game->p->pos_x + rayon->wall_dist * rayon->dir_x;
-	rayon->wall_x = floor(rayon->wall_x);
+	rayon->wall_x -= floor(rayon->wall_x);
 }
 
 void	get_rayon_data(s_game *game, s_rayon *rayon, int x)
