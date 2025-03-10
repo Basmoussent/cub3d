@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 19:26:10 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:02:15 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ void	rotate_camera(s_game *game);
 void	print_error(char *msg);
 int		ca_triche(s_game *g);
 int		check_adjacent(s_game *g, int i, int j);
+void	destroy_img(s_game *g, t_img *img);
+void	handle_malloc_fail(s_game *g, char **file, char *line, t_img *img);
+void	check_file_format(char **file, char *line, t_img *img, s_game *g);
 
 // player.c
 void	init_player(char c, s_game *g, char *line, int x);

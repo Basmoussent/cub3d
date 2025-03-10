@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 10:12:07 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:19:30 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,12 @@ int	rendering(s_game *game)
 	while (x < WIN_HEIGHT)
 	{
 		buffer[x] = ft_calloc(sizeof(int), WIN_WIDTH);
-	//	if (!buffer[x])
-			// return free
+		buffer[x + 1] = NULL;
+		if (!buffer[x])
+		{
+			free_tab((void **)buffer);
+			free_all(game, 1);
+		}
 		x++;
 	}
 	x = 0;
