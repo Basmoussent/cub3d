@@ -6,13 +6,13 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 13:07:30 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:06:34 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	free_texture(s_game *g)
+void	free_texture(t_game *g)
 {
 	char	*line;
 
@@ -40,13 +40,13 @@ void	free_texture(s_game *g)
 	}
 }
 
-void	free_player(s_player *p)
+void	free_player(t_player *p)
 {
 	if (p)
 		free(p);
 }
 
-void	free_all(s_game *g, int status)
+void	free_all(t_game *g, int status)
 {
 	if (g)
 	{

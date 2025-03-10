@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 18:25:31 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 13:43:07 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:06:19 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_graphical(int type, void *mlx, void *img, void *win)
 		mlx_destroy_window(mlx, win);
 }
 
-void	handle_malloc_fail(s_game *g, char **file, char *line, t_img *img)
+void	handle_malloc_fail(t_game *g, char **file, char *line, t_img *img)
 {
 	free_tab((void **)file);
 	free(line);
@@ -29,7 +29,7 @@ void	handle_malloc_fail(s_game *g, char **file, char *line, t_img *img)
 	free_all(g, 1);
 }
 
-void	check_file_format(char **file, char *line, t_img *img, s_game *g)
+void	check_file_format(char **file, char *line, t_img *img, t_game *g)
 {
 	if (file[1][strlen(file[1]) - 1] == '\n')
 		file[1][strlen(file[1]) - 1] = '\0';
@@ -45,7 +45,7 @@ void	check_file_format(char **file, char *line, t_img *img, s_game *g)
 	}
 }
 
-void	destroy_img(s_game *g, t_img *img)
+void	destroy_img(t_game *g, t_img *img)
 {
 	mlx_destroy_image(g->mlx, img->img);
 	free(img);

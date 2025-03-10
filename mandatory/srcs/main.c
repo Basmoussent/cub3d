@@ -12,10 +12,10 @@
 
 #include "cub3d.h"
 
-void	init_game(s_game *g, char *file)
+void	init_game(t_game *g, char *file)
 {
-	g->tex = ft_calloc(1, sizeof(s_texture));
-	g->p = ft_calloc(1, sizeof(s_player));
+	g->tex = ft_calloc(1, sizeof(t_texture));
+	g->p = ft_calloc(1, sizeof(t_player));
 	g->mlx = NULL;
 	g->map = NULL;
 	if (!g->tex || !g->p)
@@ -28,37 +28,36 @@ void	init_game(s_game *g, char *file)
 	}
 	if (!init_graphical(g))
 		free_all(g, 1);
-  	ft_memcpy(g->key_bool, (int[]){0, 0, 0, 0, 0, 0}, sizeof(g->key_bool));
+	init_keybool(g);
 	g->tex->floor_t = -1;
 	g->tex->ceili_t = -1;
 	g->p->dir_x = -2;
 	g->p->plane_y = 0.66;
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	s_game  game;
+	t_game	game;
 	t_img	img;
-		
+
 	if (argc != 2)
+	{
 		print_error("Usage: ./cub3d <map.cub>");
+		return (1);
+	}
 	if (argv[1] && ft_strlen(argv[1]) >= 4
 		&& !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4))
-   	{
+	{
 		game.img = &img;
 		init_game(&game, argv[1]);
 		parsing(&game);
-
-	//	printf("player : pos x = %f, pos y = %f, dir x = %f, dir y = %f, plane x = %f, plane y = %f\n\n", game.p->pos_x, game.p->pos_y, game.p->dir_x, game.p->pos_y, game.p->plane_x, game.p->plane_y);
-		execution(&game);	
+		execution(&game);
 		free_all(&game, 0);
 	}
 	else
 	{
 		print_error("Wrong file extension. only .cub are supported\n");
-		return (1);  
+		return (1);
 	}
-	return 0;
+	return (0);
 }
-
-

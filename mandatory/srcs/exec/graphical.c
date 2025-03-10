@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:08:07 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 12:56:05 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:04:57 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	init_image(void *mlx, t_img *img)
 	return (1);
 }
 
-int	init_graphical(s_game *game)
+int	init_graphical(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
