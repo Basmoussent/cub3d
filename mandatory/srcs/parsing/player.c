@@ -59,6 +59,6 @@ void set_player_pos(s_game *g, int pos_x, int dir_x, int dir_y)
 		;
 	g->p->dir_x = dir_x;
 	g->p->dir_y = dir_y;
-	g->p->pos_x = pos_x;
-	g->p->pos_y = i;
+	g->p->pos_x = pos_x + 0.005;
+	g->p->pos_y = i + 0.005;
 }
