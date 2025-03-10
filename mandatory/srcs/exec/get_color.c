@@ -6,24 +6,40 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 16:22:12 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/09 18:13:56 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+// Pas bon pour l'instant
+static t_img	*find_side(s_game *game, s_rayon *rayon)
+{
+	t_img	*tex;
+	
+	tex = game->tex->no_t;
+	if (rayon->side == 1)
+		tex = game->tex->we_t;
+	if (!rayon->side && rayon->dir_x > 0)
+		tex = game->tex->ea_t;
+	if (!rayon->side && rayon->dir_x < 0)
+		tex = game->tex->we_t;
+	if (rayon->side && rayon->dir_x > 0)
+		tex = game->tex->so_t;
+	if (rayon->side && rayon->dir_x < 0)
+		tex = game->tex->no_t;
+	return (tex);
+}
+
 int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x, int y)
 {
 	int		texX;
 	int		texY;
-	t_img	*tex_dir;	// fonction pour definir si on est N, O, E, S
+	t_img	*tex_dir;
 	double	step;
 	double	texPos;
 
-	// fonction texNum
-	tex_dir = game->tex->no_t;
-	// ici au hasard, a bien coder
-
+	tex_dir = find_side(game, rayon);
 	texX = (int)(rayon->wall_x * (double)tex_dir->width);
 	if (rayon->side == 0 && rayon->dir_x > 0)
 		texX = tex_dir->width - texX - 1;
