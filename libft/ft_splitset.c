@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:13:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 11:58:26 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:40:59 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,10 @@ static int	fill_rslt(char **rslt, char const *s, char c, int max_split)
 			if (max_split > 0 && j >= (size_t)max_split)
 			{
 				rslt[j] = ft_strdup(&s[i]);
+				rslt[j + 1] = NULL;
 				return (0);
 			}
-			rslt[j] = malloc(sizeof(char) * (count + 1));
+			rslt[j] = ft_calloc(count + 1, sizeof(char));
 			if (!rslt[j])
 				return (1);
 			fill_tab(rslt[j++], &s[i], c);
@@ -85,7 +86,7 @@ char	**ft_splitset(char const *s, char c, int max_split)
 	if (!s)
 		return (NULL);
 	words = count_words(s, c, max_split);
-	rslt = malloc(sizeof(char *) * (words + 1));
+	rslt = ft_calloc(words + 2 ,sizeof(char *));
 	if (!rslt)
 		return (NULL);
 	if (fill_rslt(rslt, s, c, max_split) == 1)

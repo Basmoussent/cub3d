@@ -63,6 +63,7 @@ int	rendering(s_game *game)
 	if (!rayon)
 		return (0);
 	buffer = init_buffer(game, rayon);
+
 	while (x < WIN_WIDTH)
 	{
 		get_rayon_data(game, rayon, x);

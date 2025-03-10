@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:09:17 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 10:54:43 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:48:09 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	set_player_plane(s_game *g, float x, float y)
 	g->p->plane_y = y;
 }
 
-
-void init_player(char c, s_game *g, char *line, int x)
+void	ft_player_norme(s_game *g, char *line)
 {
 	if (g->p->dir_x != -2)
 	{
@@ -27,6 +26,11 @@ void init_player(char c, s_game *g, char *line, int x)
 		print_error("This isn't a multiplayer game unfortunately\n");
 		free_all(g, 1);
 	}
+}
+
+void	init_player(char c, s_game *g, char *line, int x)
+{
+	ft_player_norme(g, line);
 	if (c == 'N')
 	{
 		set_player_pos(g, x, 0, -1);
@@ -47,15 +51,14 @@ void init_player(char c, s_game *g, char *line, int x)
 		set_player_pos(g, x, -1, 0);
 		set_player_plane(g, 0, -0.66);
 	}
-		
 }
 
-void set_player_pos(s_game *g, int pos_x, int dir_x, int dir_y)
+void	set_player_pos(s_game *g, int pos_x, int dir_x, int dir_y)
 {
-	int i;
+	int	i;
 
 	i = -1;
-	while(g->map[++i])
+	while (g->map[++i])
 		;
 	g->p->dir_x = dir_x;
 	g->p->dir_y = dir_y;
