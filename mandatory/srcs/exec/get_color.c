@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 18:13:56 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 09:07:55 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@ static t_img	*find_side(s_game *game, s_rayon *rayon)
 	
 	tex = game->tex->no_t;
 	if (rayon->side == 1)
-		tex = game->tex->we_t;
-	if (!rayon->side && rayon->dir_x > 0)
-		tex = game->tex->ea_t;
-	if (!rayon->side && rayon->dir_x < 0)
-		tex = game->tex->we_t;
-	if (rayon->side && rayon->dir_x > 0)
-		tex = game->tex->so_t;
-	if (rayon->side && rayon->dir_x < 0)
-		tex = game->tex->no_t;
+	{
+		if (rayon->dir_y > 0)
+			tex = game->tex->so_t;
+		else
+			tex = game->tex->no_t;
+	}
+	else
+	{
+		if (rayon->dir_x < 0)
+			tex = game->tex->we_t;
+		else
+			tex = game->tex->ea_t;
+	}
 	return (tex);
 }
 
