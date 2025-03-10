@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 15:08:35 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:49:29 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ static void	wall_height(t_game *game, t_rayon *rayon)
 	if (rayon->draw_end >= WIN_HEIGHT)
 		rayon->draw_end = WIN_HEIGHT - 1;
 	if (rayon->side == 0)
-		rayon->wall_x = game->p->pos_x + rayon->wall_dist * rayon->dir_y;
+		rayon->wall_x = game->p->pos_y + rayon->wall_dist * rayon->dir_y;
 	else
-		rayon->wall_x = game->p->pos_y + rayon->wall_dist * rayon->dir_x;
+		rayon->wall_x = game->p->pos_x + rayon->wall_dist * rayon->dir_x;
 	rayon->wall_x -= floor(rayon->wall_x);
 }
 

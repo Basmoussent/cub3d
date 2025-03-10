@@ -24,19 +24,21 @@ int	rgb_to_hex(char **rgb, t_game *game, char *line)
 	{
 		free((void **)rgb);
 		free(line);
+		print_error("Malloc failed for rgb_values\n");
 		free_all(game, 1);
 	}
 	if (ft_size(rgb_values) != 3)
 	{
-		free((void **)rgb);
 		free(line);
+		free_tab((void **)rgb);
+		free_tab((void **)rgb_values);
+		print_error("rgb is NOT formated properly\n");
 		free_all(game, 1);
 	}
 	r = ft_atoi(rgb_values[0]);
 	g = ft_atoi(rgb_values[1]);
 	b = ft_atoi(rgb_values[2]);
-	free_tab((void **)rgb_values);
-	return (r << 16 | g << 8 | b);
+	return (free_tab((void **)rgb_values), r << 16 | g << 8 | b);
 }
 
 static void	check_remaining_lines(t_game *g, char *line)
