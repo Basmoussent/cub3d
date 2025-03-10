@@ -32,9 +32,9 @@ int	rgb_to_hex(char **rgb, s_game *game, char *line)
 		free(line);
 		free_all(game, 1);
 	}
-	r = ft_atoi(rgb_values[0]);
-	g = ft_atoi(rgb_values[1]);
-	b = ft_atoi(rgb_values[2]);
+	r = (unsigned short)ft_atoi(rgb_values[0]) % 255;
+	g = (unsigned short)ft_atoi(rgb_values[1]) % 255;
+	b = (unsigned short)ft_atoi(rgb_values[2]) % 255;
 	free_tab((void **)rgb_values);
 	return (r << 16 | g << 8 | b);
 }
@@ -93,6 +93,11 @@ void parsing(s_game *g)
         process_map_line(g, line, &end, &map_started);
         free(line);
         line = get_next_line(g->tex->fd);
+    }
+    if (g->tex->loaded != 1 || map_started == 0 || g->p->dir_x == -2)
+    {
+        print_error("One of the caracteristic did NOT load properly.\n");
+        free_all(g, 1);
     }
     check_surrounded_by_walls(g);
 }

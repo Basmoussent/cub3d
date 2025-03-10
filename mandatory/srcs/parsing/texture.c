@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 09:13:52 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/09 16:28:57 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 11:58:08 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,12 @@ void load_texture(s_game *g, char **file, char *val, char *line)
 	{
 		free_tab((void **)file);
 		free(line);
+		free(img);
 		print_error("Texture arent in .xpm format\n");
 		free_all(g, 1);
 	}
+	file[1] = ft_skip(file[1], " \t\n\r\v\f");
+	ft_replace(file[1], " ", '\0');
 	img->img = mlx_xpm_file_to_image(g->mlx, file[1], &img->width, &img->height);
     if (!img->img)
     {
@@ -90,10 +93,13 @@ void extract_texture(s_game *g, char *line)
 	
 	if (g->tex->loaded == 1)
 		return ;
-	tmp = ft_split(line, ' ');
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
+	tmp = ft_splitset(line, ' ', 1);
 	if (!tmp)
 		return ;
 	size = ft_size(tmp);
+	printf("size =%d\n", size);
 	if (size > 2)
 	{
 		free_tab((void **)tmp);

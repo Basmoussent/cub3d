@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 19:26:36 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 10:12:07 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,12 +101,6 @@ int	update_game(s_game *game)
 
 int	execution(s_game *game)
 {
-	game->key_bool[0] = 0;
-	game->key_bool[1] = 0;
-	game->key_bool[2] = 0;
-	game->key_bool[3] = 0;
-	game->key_bool[4] = 0;
-	game->key_bool[5] = 0;
 	rendering(game);
 	key_controls(game);
 //	mlx_hook(game->win, 17, 0, ca_triche, game);

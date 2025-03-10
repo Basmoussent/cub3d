@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:54:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/06 14:29:28 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 11:57:59 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
 char	*ft_skip(char *str, const char *charset);
 int		ft_size(char **array);
 void	ft_replace(char *str, const char *charset, char replace_char);
+char	**ft_splitset(char const *s, char c, int max_split);
 
 // OTHER FUNCTIONS //
 char	*ft_substr(char const *s, unsigned int start, size_t len);

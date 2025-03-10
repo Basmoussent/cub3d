@@ -63,7 +63,6 @@ void extract_line(s_game *g, char *line, int *end)
 	if (line[len - 1] == '\n')
 		line[len - 1] = '\0';
 	end++;
-	check_case(g, line);
 	if (g->map == NULL)
 	{
 		init_map(g, line);
@@ -72,9 +71,10 @@ void extract_line(s_game *g, char *line, int *end)
 	else
 	{
 		while (g->map[i] != NULL)
-			i++;
+		i++;
 		add_line_to_map(g, line, i);
 	}
+	check_case(g, line);
 }
 
 void init_map(s_game * g, char *line)
