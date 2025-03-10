@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:09:17 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 15:05:56 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 16:42:43 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,6 @@ void	set_player_pos(t_game *g, int pos_x, int dir_x, int dir_y)
 		;
 	g->p->dir_x = dir_x;
 	g->p->dir_y = dir_y;
-	g->p->pos_x = pos_x + 0.005;
-	g->p->pos_y = i + 0.005;
+	g->p->pos_x = pos_x + 0.5;
+	g->p->pos_y = i - 0.5;
 }
