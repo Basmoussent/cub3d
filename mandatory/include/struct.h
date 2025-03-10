@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/07 16:07:42 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:47:46 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ typedef struct t_rayon
 	int		draw_end;
 	double	wall_x;
 }	s_rayon;
+
+typedef struct	t_tex_info
+{
+	int	x;
+	int	y;
+	double	pos;
+}	s_tex_info;
 
 enum {
 	W = 119,
