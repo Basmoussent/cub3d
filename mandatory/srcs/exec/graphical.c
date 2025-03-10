@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:08:07 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 11:08:08 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:56:05 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	init_image(void *mlx, t_img *img)
 	if (!img->img)
 		return (0);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
-		&img->line_length, &img->endian);
+			&img->line_length, &img->endian);
 	if (!img->addr)
 		return (0);
 	return (1);
