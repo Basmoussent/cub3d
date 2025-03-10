@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 15:03:23 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 17:17:24 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,19 @@ int	update_game(t_game *game)
 	return (0);
 }
 
+int mouse_move(int x, int y, void *param)
+{
+    (void)param;
+    printf("Mouse moved to: X = %d, Y = %d\n", x, y);
+    return (0);
+}
+
 int	execution(t_game *game)
 {
 	rendering(game);
 	key_controls(game);
 	mlx_loop_hook(game->mlx, &update_game, game);
+	mlx_hook(game->win, 6, 0, mouse_move, NULL);
 	mlx_loop(game->mlx);
 	return (1);
 }
