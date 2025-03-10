@@ -6,9 +6,11 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 11:45:35 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 12:37:27 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 14:24:41 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int	ft_size(char **array)
 {
@@ -17,7 +19,7 @@ int	ft_size(char **array)
 	if (!array || !*array)
 		return (0);
 	i = 0;
-	while (array[i])
+	while (array[i] && ft_strlen(array[i]) > (size_t)0)
 		i++;
 	return (i);
 }

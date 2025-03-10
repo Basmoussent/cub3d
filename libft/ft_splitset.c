@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 15:13:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 13:06:43 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 14:28:10 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	**ft_splitset(char const *s, char c, int max_split)
 	if (!s)
 		return (NULL);
 	words = count_words(s, c, max_split);
-	rslt = ft_calloc(words + 2 ,sizeof(char *));
+	rslt = ft_calloc(words + 3 ,sizeof(char *));
 	if (!rslt)
 		return (NULL);
 	if (fill_rslt(rslt, s, c, max_split) == 1)

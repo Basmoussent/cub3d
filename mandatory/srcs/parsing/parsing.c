@@ -28,8 +28,9 @@ int	rgb_to_hex(char **rgb, s_game *game, char *line)
 	}
 	if (ft_size(rgb_values) != 3)
 	{
-		free((void **)rgb);
 		free(line);
+		free_tab((void **)rgb);
+		free_tab((void **)rgb_values);
 		free_all(game, 1);
 	}
 	r = (unsigned short)ft_atoi(rgb_values[0]) % 255;

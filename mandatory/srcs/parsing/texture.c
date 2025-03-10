@@ -14,6 +14,7 @@
 
 t_img	*create_image(s_game *g, char **file, t_img *img, char *line)
 {
+	ft_replace(file[1],  " \t\n\r\v\f", '\0');
 	img->img = mlx_xpm_file_to_image(g->mlx, file[1],
 			&img->width, &img->height);
 	if (!img->img)
@@ -51,8 +52,8 @@ void	load_texture(s_game *g, char **file, char *val, char *line)
 	img = malloc(sizeof(t_img));
 	if (!img)
 		handle_malloc_fail(g, file, line, img);
-	check_file_format(file, line, img, g);
 	file[1] = ft_skip(file[1], " \t\n\r\v\f");
+	check_file_format(file, line, img, g);
 	img = create_image(g, file, img, line);
 	assign_texture(g, val, img);
 }
