@@ -50,7 +50,7 @@ int main(int argc, char **argv)
 		parsing(&game);
 
 	//	printf("player : pos x = %f, pos y = %f, dir x = %f, dir y = %f, plane x = %f, plane y = %f\n\n", game.p->pos_x, game.p->pos_y, game.p->dir_x, game.p->pos_y, game.p->plane_x, game.p->plane_y);
-		//execution(&game);	
+		execution(&game);	
 		free_all(&game, 0);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 13:02:22 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:07:30 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_texture(s_game *g)
 		if (g->tex->so_t)
 			destroy_img(g, g->tex->so_t);
 		if (g->tex->we_t)
-			destroy_img(g, g->tex->so_t);
+			destroy_img(g, g->tex->we_t);
 		if (g->tex->ea_t)
 			destroy_img(g, g->tex->ea_t);
 		line = get_next_line(g->tex->fd);
