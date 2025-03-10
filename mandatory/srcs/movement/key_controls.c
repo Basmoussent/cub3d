@@ -6,29 +6,29 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:32:26 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 10:09:20 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 13:00:41 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void upd_key_bool(int keycode, s_game *game, int x)
+void	upd_key_bool(int keycode, s_game *game, int x)
 {
-  if (keycode == W)
-    game->key_bool[0] = x;
-  if (keycode == S)
-    game->key_bool[1] = x;
-  if (keycode == A)
-    game->key_bool[2] = x;
-  if (keycode == D)
-    game->key_bool[3] = x;
-  if (keycode == LEFT)
-    game->key_bool[4] = x;
-  if (keycode == RIGHT)
-    game->key_bool[5] = x;
+	if (keycode == W)
+		game->key_bool[0] = x;
+	if (keycode == S)
+		game->key_bool[1] = x;
+	if (keycode == A)
+		game->key_bool[2] = x;
+	if (keycode == D)
+		game->key_bool[3] = x;
+	if (keycode == LEFT)
+		game->key_bool[4] = x;
+	if (keycode == RIGHT)
+		game->key_bool[5] = x;
 }
 
-int ft_release(int keycode, s_game *game)
+int	ft_release(int keycode, s_game *game)
 {
 	upd_key_bool(keycode, game, 0);
 	return (0);
@@ -36,16 +36,9 @@ int ft_release(int keycode, s_game *game)
 
 int	ft_button(int keycode, s_game *game)
 {
-
 	if (keycode == ESC)
 		free_all(game, 0);
 	upd_key_bool(keycode, game, 1);
-/*	
-	if (keycode == W || keycode == S || keycode == A || keycode == D)
-		move_player(game, keycode);
-	else if (keycode == LEFT || keycode == RIGHT)
-		rotate_camera(game, keycode);
-*/
 	return (0);
 }
 

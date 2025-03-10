@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:31:22 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/09 15:21:23 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 12:59:18 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,11 @@ void	rotation(s_game *game, double a)
 	rendering(game);
 }
 
-// Left rotate -1    / Right rotate 1
-
+// Left = 4 / Right = 5
 void	rotate_camera(s_game *game)
 {
-	if (game->key_bool[4])  // left
-		rotation(game, ROTSPEED * -1); // valeur aleatoire ici
+	if (game->key_bool[4])
+		rotation(game, ROTSPEED * -1);
 	if (game->key_bool[5])
-		rotation(game, ROTSPEED); // valeur aleatoire
+		rotation(game, ROTSPEED);
 }
