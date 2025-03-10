@@ -70,10 +70,11 @@ int	rendering(s_game *game)
 	{
 		get_rayon_data(game, rayon, x);
 /*		
-		if (x == 0 || x == 500)
+		if (x == 0 || x == 500 || x == 1000)
 		{
 			printf("\nPOUR X = %d\n\n", x);
-			printf("camera_x = %f, dir_x, = %f, dir y = %f, delta dist x = %f, delta dist y = %f\n", rayon->camera_x, rayon->dir_x, rayon->dir_y, rayon->delta_dist_x, rayon->delta_dist_y);
+			printf("p dir x = %f, p dir y = %f, p pos x = %f, p pos y = %f\n", game->p->dir_x, game->p->dir_y, game->p->pos_x, game->p->pos_y);
+      printf("camera_x = %f, dir_x, = %f, dir y = %f, delta dist x = %f, delta dist y = %f\n", rayon->camera_x, rayon->dir_x, rayon->dir_y, rayon->delta_dist_x, rayon->delta_dist_y);
 			printf("step x = %d, step y = %d, side dist x = %f, side dist y = %f, map x = %d, map y = %d\n", rayon->step_x, rayon->step_y, rayon->side_dist_x, rayon->side_dist_y, rayon->map_x, rayon->map_y);
 			printf("side = %d, wall_dist = %f, line height = %d, draw start = %d, draw end = %d, wall x = %f\n", rayon->side, rayon->wall_dist, rayon->line_height, rayon->draw_start, rayon->draw_end, rayon->wall_x);
 			printf("\n");
@@ -109,7 +110,6 @@ int	execution(s_game *game)
 	game->key_bool[5] = 0;
 	rendering(game);
 	key_controls(game);
-//	mlx_hook(game->win, 17, 0, ca_triche, game);
 	mlx_loop_hook(game->mlx, &update_game, game);
   mlx_loop(game->mlx);
 	return (1);

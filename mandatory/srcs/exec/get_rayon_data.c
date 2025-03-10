@@ -52,7 +52,6 @@ static void	dda(s_game *game, s_rayon *rayon)
 			rayon->map_y += rayon->step_y;
 			rayon->side = 1;
 		}
-	//	printf("map x = %d , map y = %d\n", rayon->map_x, rayon->map_y);
 		if (game->map[rayon->map_y][rayon->map_x] == '1')
 			break ;
 	}
@@ -64,8 +63,8 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 		rayon->wall_dist = (rayon->map_x - game->p->pos_x + (1 - rayon->step_x) / 2) / rayon->dir_x;
 	else
 		rayon->wall_dist = (rayon->map_y - game->p->pos_y + (1 - rayon->step_y) / 2) / rayon->dir_y;
-	rayon->line_height = (int)(WIN_HEIGHT / rayon->wall_dist);
-	rayon->draw_start = -rayon->line_height / 2 + WIN_HEIGHT / 2;
+  rayon->line_height = (int)(WIN_HEIGHT / rayon->wall_dist);
+  rayon->draw_start = -rayon->line_height / 2 + WIN_HEIGHT / 2;
 	if (rayon->draw_start < 0)
 		rayon->draw_start = 0;
 	rayon->draw_end = rayon->line_height / 2 + WIN_HEIGHT / 2;
@@ -80,10 +79,8 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 
 void	get_rayon_data(s_game *game, s_rayon *rayon, int x)
 {
-//	printf("p->dir x = %f, p->dir_y = %f, plane x = %f, plane y = %f\n", game->p->dir_x, game->p->dir_y, game->p->plane_x, game->p->plane_y);
 	// Calculating the ray direction
 	rayon->camera_x = 2 * x / (double)WIN_WIDTH - 1;
-//	printf("camera x = %f\n", rayon->camera_x);
 	rayon->dir_x = game->p->dir_x + game->p->plane_x * rayon->camera_x;	
 	rayon->dir_y = game->p->dir_y + game->p->plane_y * rayon->camera_x;	
 
