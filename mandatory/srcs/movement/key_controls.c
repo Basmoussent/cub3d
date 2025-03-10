@@ -6,7 +6,7 @@
 /*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:32:26 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/07 16:07:50 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 10:09:20 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,4 @@ void	key_controls(s_game *game)
 	mlx_hook(game->win, 17, 0, cross_close, game);
 	mlx_hook(game->win, 2, 1L << 0, ft_button, game);
 	mlx_hook(game->win, 3, 1L << 1, ft_release, game);
-	// gerer les key en continu
-	// mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release_handler, data);
 }

@@ -110,6 +110,7 @@ int	execution(s_game *game)
 	rendering(game);
 	key_controls(game);
 //	mlx_hook(game->win, 17, 0, ca_triche, game);
-	mlx_loop(game->mlx);
+	mlx_loop_hook(game->mlx, &update_game, game);
+  mlx_loop(game->mlx);
 	return (1);
 }
