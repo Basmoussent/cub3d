@@ -13,7 +13,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct	 s_img {
+typedef struct s_img {
 	void	*img;
 	char	*addr;
 	int		bits_per_pixel;
@@ -23,7 +23,7 @@ typedef struct	 s_img {
 	int		height;
 }	t_img;
 
-typedef struct t_texture {
+typedef struct s_texture {
 	char	*file;
 	int		fd;
 	t_img	*no_t;
@@ -32,31 +32,30 @@ typedef struct t_texture {
 	t_img	*ea_t;
 	int		floor_t;
 	int		ceili_t;
-	int	 loaded;
-}	s_texture;
+	int		loaded;
+}	t_texture;
 
-typedef struct t_player {
-	double 	pos_x; // px
-	double	pos_y; // py
-	double	dir_x; // pdx
-	double 	dir_y; // pdy
-	double	plane_x; // surement 0
-	double	plane_y; // surement 0.66
-} s_player;
+typedef struct s_player {
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+}	t_player;
 
-
-typedef struct t_game
+typedef struct s_game
 {
 	void		*mlx;
 	void		*win;
 	char		**map;
-	s_player	*p;
-	s_texture	*tex;
+	t_player	*p;
+	t_texture	*tex;
 	t_img		*img;
 	int			key_bool[6];
-}	s_game;
+}	t_game;
 
-typedef struct t_rayon
+typedef struct s_rayon
 {
 	double	camera_x;
 	double	dir_x;
@@ -75,14 +74,14 @@ typedef struct t_rayon
 	int		draw_start;
 	int		draw_end;
 	double	wall_x;
-}	s_rayon;
+}	t_rayon;
 
-typedef struct	t_tex_info
+typedef struct s_tex_info
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	double	pos;
-}	s_tex_info;
+}	t_tex_info;
 
 enum {
 	W = 119,

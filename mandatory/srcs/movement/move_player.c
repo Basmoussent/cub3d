@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:29:02 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 12:58:33 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:05:21 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	move(s_game *game, double vector_x, double vector_y)
+void	move(t_game *game, double vector_x, double vector_y)
 {
   double  reste;
   double  unused;
@@ -37,7 +37,7 @@ void	move(s_game *game, double vector_x, double vector_y)
 	rendering(game);
 }
 
-void	move_player(s_game *game)
+void	move_player(t_game *game)
 {
 	if (game->key_bool[0])
 		move(game, game->p->pos_x + game->p->dir_x * MOVESPEED,

@@ -12,9 +12,9 @@
 
 #include "cub3d.h"
 
-t_img	*create_image(s_game *g, char **file, t_img *img, char *line)
+t_img	*create_image(t_game *g, char **file, t_img *img, char *line)
 {
-	ft_replace(file[1],  " \t\n\r\v\f", '\0');
+	ft_replace(file[1], " \t\n\r\v\f", '\0');
 	img->img = mlx_xpm_file_to_image(g->mlx, file[1],
 			&img->width, &img->height);
 	if (!img->img)
@@ -33,22 +33,32 @@ t_img	*create_image(s_game *g, char **file, t_img *img, char *line)
 	return (img);
 }
 
-void	assign_texture(s_game *g, char *val, t_img *img)
+void	assign_texture(t_game *g, char *val, t_img *img)
 {
-	if (strcmp(val, "NO") == 0)
+	if (ft_strncmp(val, "NO", 3) == 0)
 		g->tex->no_t = img;
-	else if (strcmp(val, "SO") == 0)
+	else if (ft_strncmp(val, "SO", 3) == 0)
 		g->tex->so_t = img;
-	else if (strcmp(val, "WE") == 0)
+	else if (ft_strncmp(val, "WE", 3) == 0)
 		g->tex->we_t = img;
-	else if (strcmp(val, "EA") == 0)
+	else if (ft_strncmp(val, "EA", 3) == 0)
 		g->tex->ea_t = img;
 }
 
-void	load_texture(s_game *g, char **file, char *val, char *line)
+void	load_texture(t_game *g, char **file, char *val, char *line)
 {
 	t_img	*img;
 
+	if ((ft_strncmp(val, "NO", 3) == 0 && g->tex->no_t)
+		|| (ft_strncmp(val, "SO", 3) == 0 && g->tex->so_t)
+		|| (ft_strncmp(val, "WE", 3) == 0 && g->tex->we_t)
+		|| (ft_strncmp(val, "EA", 3) == 0 && g->tex->ea_t))
+	{
+		free_tab((void **)file);
+		free(line);
+		print_error("double texture loaded\n");
+		free_all(g, 2);
+	}
 	img = malloc(sizeof(t_img));
 	if (!img)
 		handle_malloc_fail(g, file, line, img);
@@ -58,7 +68,7 @@ void	load_texture(s_game *g, char **file, char *val, char *line)
 	assign_texture(g, val, img);
 }
 
-void	parse_texture(char **tmp, s_game *g, char *line)
+void	parse_texture(char **tmp, t_game *g, char *line)
 {
 	if (!g->mlx)
 		return ;
@@ -79,7 +89,7 @@ void	parse_texture(char **tmp, s_game *g, char *line)
 		g->tex->loaded = 1;
 }
 
-void	extract_texture(s_game *g, char *line)
+void	extract_texture(t_game *g, char *line)
 {
 	char	**tmp;
 	int		size;

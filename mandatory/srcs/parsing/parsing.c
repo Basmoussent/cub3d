@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-int	rgb_to_hex(char **rgb, s_game *game, char *line)
+int	rgb_to_hex(char **rgb, t_game *game, char *line)
 {
 	char	**rgb_values;
 	int		r;
@@ -24,6 +24,7 @@ int	rgb_to_hex(char **rgb, s_game *game, char *line)
 	{
 		free((void **)rgb);
 		free(line);
+		print_error("Malloc failed for rgb_values\n");
 		free_all(game, 1);
 	}
 	if (ft_size(rgb_values) != 3)
@@ -31,16 +32,16 @@ int	rgb_to_hex(char **rgb, s_game *game, char *line)
 		free(line);
 		free_tab((void **)rgb);
 		free_tab((void **)rgb_values);
+		print_error("rgb is NOT formated properly\n");
 		free_all(game, 1);
 	}
-	r = (unsigned short)ft_atoi(rgb_values[0]) % 255;
-	g = (unsigned short)ft_atoi(rgb_values[1]) % 255;
-	b = (unsigned short)ft_atoi(rgb_values[2]) % 255;
-	free_tab((void **)rgb_values);
-	return (r << 16 | g << 8 | b);
+	r = ft_atoi(rgb_values[0]);
+	g = ft_atoi(rgb_values[1]);
+	b = ft_atoi(rgb_values[2]);
+	return (free_tab((void **)rgb_values), r << 16 | g << 8 | b);
 }
 
-static void	check_remaining_lines(s_game *g, char *line)
+static void	check_remaining_lines(t_game *g, char *line)
 {
 	char	*next_line;
 
@@ -55,10 +56,11 @@ static void	check_remaining_lines(s_game *g, char *line)
 			free_all(g, 1);
 		}
 		free(next_line);
+		next_line = get_next_line(g->tex->fd);
 	}
 }
 
-static void	process_map_line(s_game *g, char *line, int *end, int *map_started)
+static void	process_map_line(t_game *g, char *line, int *end, int *map_started)
 {
 	if (ft_strlen(line) > 1 || line[0] != '\n')
 	{
@@ -66,12 +68,10 @@ static void	process_map_line(s_game *g, char *line, int *end, int *map_started)
 		extract_line(g, line, end);
 	}
 	else if (*map_started && line[0] == '\n')
-	{
 		check_remaining_lines(g, line);
-	}
 }
 
-static void	parse_textures(s_game *g, char **line)
+static void	parse_textures(t_game *g, char **line)
 {
 	while (*line && g->tex->loaded != 1)
 	{
@@ -81,7 +81,7 @@ static void	parse_textures(s_game *g, char **line)
 	}
 }
 
-void	parsing(s_game *g)
+void	parsing(t_game *g)
 {
 	char	*line;
 	int		end;

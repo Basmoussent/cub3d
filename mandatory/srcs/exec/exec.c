@@ -6,13 +6,13 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 12:35:10 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:03:23 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	draw_buffer(s_game *game, int **buffer)
+static int	draw_buffer(t_game *game, int **buffer)
 {
 	int	x;
 	int	y;
@@ -32,7 +32,7 @@ static int	draw_buffer(s_game *game, int **buffer)
 	return (1);
 }
 
-static int	**init_buffer(s_game *game, s_rayon *rayon)
+static int	**init_buffer(t_game *game, t_rayon *rayon)
 {
 	int	**buffer;
 	int	x;
@@ -52,18 +52,17 @@ static int	**init_buffer(s_game *game, s_rayon *rayon)
 	return (buffer);
 }
 
-int	rendering(s_game *game)
+int	rendering(t_game *game)
 {
-	s_rayon	*rayon;
+	t_rayon	*rayon;
 	int		**buffer;
 	int		x;
 
 	x = 0;
-	rayon = ft_calloc(sizeof(s_rayon), 1);
+	rayon = ft_calloc(sizeof(t_rayon), 1);
 	if (!rayon)
 		return (0);
 	buffer = init_buffer(game, rayon);
-
 	while (x < WIN_WIDTH)
 	{
 		get_rayon_data(game, rayon, x);
@@ -74,7 +73,7 @@ int	rendering(s_game *game)
 	return (free_tab((void **)buffer), free(rayon), 1);
 }
 
-int	update_game(s_game *game)
+int	update_game(t_game *game)
 {
 	if (game->key_bool[0] || game->key_bool[1] || game->key_bool[2]
 		|| game->key_bool[3] || game->key_bool[4] || game->key_bool[5])
@@ -86,7 +85,7 @@ int	update_game(s_game *game)
 	return (0);
 }
 
-int	execution(s_game *game)
+int	execution(t_game *game)
 {
 	rendering(game);
 	key_controls(game);

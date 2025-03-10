@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	add_line_to_map(s_game *g, char *line, int i)
+void	add_line_to_map(t_game *g, char *line, int i)
 {
 	char	**new_map;
 	char	*new_line;
@@ -35,7 +35,7 @@ void	add_line_to_map(s_game *g, char *line, int i)
 	g->map[i + 1] = NULL;
 }
 
-void	check_case(s_game *g, char *line)
+void	check_case(t_game *g, char *line)
 {
 	int	y;
 
@@ -58,7 +58,7 @@ void	check_case(s_game *g, char *line)
 	}
 }
 
-void	extract_line(s_game *g, char *line, int *end)
+void	extract_line(t_game *g, char *line, int *end)
 {
 	int	i;
 	int	len;
@@ -84,7 +84,7 @@ void	extract_line(s_game *g, char *line, int *end)
 	check_case(g, line);
 }
 
-void	init_map(s_game *g, char *line)
+void	init_map(t_game *g, char *line)
 {
 	g->map = (char **)ft_calloc(2, sizeof(char *));
 	if (!g->map)
@@ -96,7 +96,7 @@ void	init_map(s_game *g, char *line)
 	g->map[1] = NULL;
 }
 
-void	check_surrounded_by_walls(s_game *g)
+void	check_surrounded_by_walls(t_game *g)
 {
 	int	i;
 	int	j;

@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static void	get_step(s_game *game, s_rayon *rayon)
+static void	get_step(t_game *game, t_rayon *rayon)
 {
 	if (rayon->dir_x < 0)
 	{
@@ -40,7 +40,7 @@ static void	get_step(s_game *game, s_rayon *rayon)
 	}
 }
 
-static void	dda(s_game *game, s_rayon *rayon)
+static void	dda(t_game *game, t_rayon *rayon)
 {
 	while (1)
 	{
@@ -61,7 +61,7 @@ static void	dda(s_game *game, s_rayon *rayon)
 	}
 }
 
-static void	wall_height(s_game *game, s_rayon *rayon)
+static void	wall_height(t_game *game, t_rayon *rayon)
 {
 	if (rayon->side == 0)
 		rayon->wall_dist = (rayon->map_x - game->p->pos_x
@@ -83,7 +83,7 @@ static void	wall_height(s_game *game, s_rayon *rayon)
 	rayon->wall_x -= floor(rayon->wall_x);
 }
 
-void	get_rayon_data(s_game *game, s_rayon *rayon, int x)
+void	get_rayon_data(t_game *game, t_rayon *rayon, int x)
 {
 	rayon->camera_x = 2 * x / (double)WIN_WIDTH - 1;
 	rayon->dir_x = game->p->dir_x + game->p->plane_x * rayon->camera_x;

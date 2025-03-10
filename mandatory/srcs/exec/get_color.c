@@ -6,13 +6,13 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 12:53:01 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:03:43 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static t_img	*find_side(s_game *game, s_rayon *rayon)
+static t_img	*find_side(t_game *game, t_rayon *rayon)
 {
 	t_img	*tex;
 
@@ -34,9 +34,9 @@ static t_img	*find_side(s_game *game, s_rayon *rayon)
 	return (tex);
 }
 
-int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x)
+int	get_textures(t_game *game, t_rayon *rayon, int **buffer, int x)
 {
-	s_tex_info	t_info;
+	t_tex_info	t_info;
 	t_img		*tex_dir;
 	double		step;
 	int			y;
@@ -62,7 +62,7 @@ int	get_textures(s_game *game, s_rayon *rayon, int **buffer, int x)
 	return (y - 1);
 }
 
-void	get_color(s_game *game, s_rayon *rayon, int **buffer, int x)
+void	get_color(t_game *game, t_rayon *rayon, int **buffer, int x)
 {
 	int	y;
 

@@ -6,19 +6,19 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 11:09:17 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 15:39:03 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 16:42:43 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	set_player_plane(s_game *g, float x, float y)
+void	set_player_plane(t_game *g, float x, float y)
 {
 	g->p->plane_x = x;
 	g->p->plane_y = y;
 }
 
-void	ft_player_norme(s_game *g, char *line)
+void	ft_player_norme(t_game *g, char *line)
 {
 	if (g->p->dir_x != -2)
 	{
@@ -28,7 +28,7 @@ void	ft_player_norme(s_game *g, char *line)
 	}
 }
 
-void	init_player(char c, s_game *g, char *line, int x)
+void	init_player(char c, t_game *g, char *line, int x)
 {
 	ft_player_norme(g, line);
 	if (c == 'N')
@@ -53,7 +53,7 @@ void	init_player(char c, s_game *g, char *line, int x)
 	}
 }
 
-void	set_player_pos(s_game *g, int pos_x, int dir_x, int dir_y)
+void	set_player_pos(t_game *g, int pos_x, int dir_x, int dir_y)
 {
 	int	i;
 

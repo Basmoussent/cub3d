@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_camera.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 12:31:22 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 12:59:18 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/10 15:05:28 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ To rotate a vactor, simply multiply it with the rotation matrix
 (where a is the magnitude of rotation)
 */
 
-void	rotation(s_game *game, double a)
+void	rotation(t_game *game, double a)
 {
 	double	tmp;
 
@@ -33,7 +33,7 @@ void	rotation(s_game *game, double a)
 }
 
 // Left = 4 / Right = 5
-void	rotate_camera(s_game *game)
+void	rotate_camera(t_game *game)
 {
 	if (game->key_bool[4])
 		rotation(game, ROTSPEED * -1);
