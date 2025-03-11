@@ -52,6 +52,7 @@ typedef struct s_game
 	t_player	*p;
 	t_texture	*tex;
 	t_img		*img;
+  t_img   *minimap;
 	int			key_bool[6];
 }	t_game;
 
