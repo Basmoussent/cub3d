@@ -56,7 +56,8 @@ static void	dda(t_game *game, t_rayon *rayon)
 			rayon->map_y += rayon->step_y;
 			rayon->side = 1;
 		}
-		if (game->map[rayon->map_y][rayon->map_x] == '1')
+		if (game->map[rayon->map_y][rayon->map_x] == '1' ||
+			game->map[rayon->map_y][rayon->map_x] == 'D')
 			break ;
 	}
 }

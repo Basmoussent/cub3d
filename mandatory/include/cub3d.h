@@ -64,6 +64,10 @@ void	move_player(t_game *game);
 // rotate_camera.c
 void	rotate_camera(t_game *game);
 
+// door_system.c
+void    update_doors(t_game *game);
+void    init_doors(t_game *game);
+
 // free.c
 void	print_error(char *msg);
 int		ca_triche(t_game *g);
@@ -79,5 +83,9 @@ void	set_player_pos(t_game *g, int pos_x, int dir_x, int dir_y);
 
 // free_graphical.c
 void	free_graphical(int type, void *mlx, void *img, void *win);
+
+// Door system
+void    init_doors(t_game *game);
+void    update_doors(t_game *game);
 
 #endif

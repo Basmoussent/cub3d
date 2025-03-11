@@ -12,6 +12,11 @@
 
 #include "cub3d.h"
 
+static int is_wall_or_door(char c)
+{
+	return (c == '1' || c == 'D');  // La porte fermée agit comme un mur
+}
+
 void	move(t_game *game, double vector_x, double vector_y)
 {
 	double	reste;
@@ -37,8 +42,14 @@ void	move(t_game *game, double vector_x, double vector_y)
 void	move_player(t_game *game)
 {
 	if (game->key_bool[0])
-		move(game, game->p->pos_x + game->p->dir_x * MOVESPEED,
-			game->p->pos_y + game->p->dir_y * MOVESPEED);
+	{
+		if (!is_wall_or_door(game->map[(int)game->p->pos_y]
+			[(int)(game->p->pos_x + game->p->dir_x * MOVESPEED)]))
+			game->p->pos_x += game->p->dir_x * MOVESPEED;
+		if (!is_wall_or_door(game->map[(int)(game->p->pos_y + game->p->dir_y
+			* MOVESPEED)][(int)game->p->pos_x]))
+			game->p->pos_y += game->p->dir_y * MOVESPEED;
+	}
 	if (game->key_bool[1])
 		move(game, game->p->pos_x - game->p->dir_x * MOVESPEED,
 			game->p->pos_y - game->p->dir_y * MOVESPEED);

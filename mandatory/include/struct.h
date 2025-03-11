@@ -44,6 +44,13 @@ typedef struct s_player {
 	double	plane_y;
 }	t_player;
 
+typedef struct s_door {
+	int     x;
+	int     y;
+	int     is_open;
+	struct timeval	time;
+} t_door;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -53,6 +60,8 @@ typedef struct s_game
 	t_texture	*tex;
 	t_img		*img;
 	int			key_bool[6];
+	t_door      *doors;
+	int         nb_doors;
 }	t_game;
 
 typedef struct s_rayon

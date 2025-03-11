@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 15:06:34 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/11 17:35:42 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	free_all(t_game *g, int status)
 			mlx_destroy_display(g->mlx);
 			free(g->mlx);
 		}
+		if (g->doors)
+			free(g->doors);
 	}
 	exit(status);
 }

@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/home/basmoussent/42Paris/Common_Core/cub3d/mandatory/srcs/exec",
+      "program": "/home/basmoussent/42Paris/Common_Core/cub3d/mandatory/srcs/exec/build/Debug/outDebug"
+    }
+  ]
+}

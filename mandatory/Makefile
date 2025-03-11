@@ -22,7 +22,7 @@ OBJDIR = build
 SRCS = $(SRCDIR)/main.c \
        $(PARDIR)/parsing.c $(PARDIR)/map.c $(PARDIR)/texture.c $(PARDIR)/player.c \
        $(EXECDIR)/exec.c $(EXECDIR)/get_rayon_data.c $(EXECDIR)/graphical.c \
-       $(EXECDIR)/get_color.c \
+       $(EXECDIR)/get_color.c $(EXECDIR)/door_system.c \
        $(MOVDIR)/key_controls.c $(MOVDIR)/move_player.c $(MOVDIR)/rotate_camera.c \
        $(UTILDIR)/free.c $(UTILDIR)/free_graphical.c $(UTILDIR)/utils.c
 
