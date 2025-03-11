@@ -41,6 +41,8 @@ static int is_walkable(t_game *game, int x, int y)
   return (0);
 }
 
+//	 7 --> cube de 18    HEIGHT
+//	 9 --> cube de 22 widht 
 static void fill_map(t_game *game, int **buffer)
 {
 	int	y;
@@ -48,8 +50,6 @@ static void fill_map(t_game *game, int **buffer)
 
 	y = 0;
 	x = 0;
-//	 7 --> cube de 18    HEIGHT
-//	 9 --> cube de 22 widht 
 	while (y < MAP_HEIGHT)
 	{
 		x = 0;
@@ -57,7 +57,12 @@ static void fill_map(t_game *game, int **buffer)
 		{
       if ((x / 7) < 0 || (x / 7) >= (int)ft_strlen(game->map[0]) || (y / 9) < 0 || (y / 9) >= ft_size(game->map))   // strlen a changer
         buffer[y][x] = 0; // couleur mur;
-      else if (is_walkable(game, x / 7, y / 7))
+      else if ((x / 7) == 4 && (y / 9) == 4)
+      {
+          buffer[y][x] = 255;
+          printf("y = %d, x = %d, y/9 = %d, x/7 = %d, pos y = %d, pos x = %d\n", y, x, y / 9, x / 7, (int)game->p->pos_y, (int)game->p->pos_x);
+      }
+      else if (is_walkable(game, x / 7, y / 9))
           buffer[y][x] = game->tex->floor_t;
 			else
           buffer[y][x] = 0;// voir couleur mur;
@@ -109,6 +114,6 @@ int print_minimap(t_game *game)
 		y++;
 	}
   free(buffer);
-	mlx_put_image_to_window(game->mlx, game->win, game->minimap->img, WIN_WIDTH - MAP_WIDTH - 10,WIN_HEIGHT - MAP_HEIGHT - 10);
+	mlx_put_image_to_window(game->mlx, game->win, game->minimap->img, WIN_WIDTH - MAP_WIDTH - 10, 10);
   return (1);
 }
