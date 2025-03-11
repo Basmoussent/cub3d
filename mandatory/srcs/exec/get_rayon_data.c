@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 16:43:10 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 15:44:22 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/11 11:57:20 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	get_rayon_data(t_game *game, t_rayon *rayon, int x)
 	rayon->map_y = (int)game->p->pos_y;
 	rayon->delta_dist_x = fabs(1 / rayon->dir_x);
 	rayon->delta_dist_y = fabs(1 / rayon->dir_y);
-	et_step(game, rayon);
+	get_step(game, rayon);
 	dda(game, rayon);
 	wall_height(game, rayon);
 }
