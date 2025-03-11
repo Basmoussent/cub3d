@@ -98,7 +98,7 @@ int print_minimap(t_game *game)
   buffer = init_map_buffer(game);
   fill_map(game, buffer);
 
-  while (y < MAP_WIDTH)
+  while (y < MAP_HEIGHT)
   {
     x = 0;
     while (x < MAP_WIDTH)
