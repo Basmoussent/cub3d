@@ -23,8 +23,6 @@ int init_minimap(t_game *game)
 		return (0);
   return (1);
 }
-//# define MAP_WIDTH 198
-//# define MAP_HEIGHT 126
 
 static int is_walkable(t_game *game, int x, int y)
 {
@@ -41,8 +39,15 @@ static int is_walkable(t_game *game, int x, int y)
   return (0);
 }
 
-//	 7 --> cube de 18    HEIGHT
-//	 9 --> cube de 22 widht 
+//	 7 --> cube de 18    HEIGHT --> y
+//	 9 --> cube de 22 widht --> x
+//# define MAP_WIDTH 198
+//# define MAP_HEIGHT 126
+//
+//
+//
+// NEW WHIDTH 195   / 15
+// NEW HEIGHT 126   / 9
 static void fill_map(t_game *game, int **buffer)
 {
 	int	y;
@@ -55,17 +60,12 @@ static void fill_map(t_game *game, int **buffer)
 		x = 0;
 		while (x < MAP_WIDTH)
 		{
-      if ((x / 7) < 0 || (x / 7) >= (int)ft_strlen(game->map[0]) || (y / 9) < 0 || (y / 9) >= ft_size(game->map))   // strlen a changer
-        buffer[y][x] = 0; // couleur mur;
-      else if ((x / 7) == 4 && (y / 9) == 4)
-      {
+      if ((x / 15) == 4 && (y / 9) == 4)
           buffer[y][x] = 255;
-          printf("y = %d, x = %d, y/9 = %d, x/7 = %d, pos y = %d, pos x = %d\n", y, x, y / 9, x / 7, (int)game->p->pos_y, (int)game->p->pos_x);
-      }
-      else if (is_walkable(game, x / 7, y / 9))
-          buffer[y][x] = game->tex->floor_t;
+      else if (is_walkable(game, x / 15, y / 9))
+          buffer[y][x] = 15837961;
 			else
-          buffer[y][x] = 0;// voir couleur mur;
+          buffer[y][x] = 0;
 			x++;
 		}
 		y++;
