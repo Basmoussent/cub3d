@@ -73,8 +73,26 @@ void	get_color(t_game *game, t_rayon *rayon, int **buffer, int x)
 	while (y < WIN_HEIGHT)
 	{
 		if (y < rayon->draw_start)
-			buffer[y][x] = game->tex->ceili_t;
-		if (y >= rayon->draw_start && y <= rayon->draw_end)
+		{
+			if (game->cloud->is_active && 
+				x >= game->cloud->x_pos && 
+				x < game->cloud->x_pos + game->cloud->img->width &&
+				y < game->cloud->img->height)
+			{
+				int cloud_x = x - game->cloud->x_pos;
+				int *cloud_pixel = (int *)(game->cloud->img->addr + 
+					(y * game->cloud->img->line_length + 
+					cloud_x * (game->cloud->img->bits_per_pixel / 8)));
+					
+				if (*cloud_pixel != 0)
+					buffer[y][x] = *cloud_pixel;
+				else
+					buffer[y][x] = game->tex->ceili_t;
+			}
+			else
+				buffer[y][x] = game->tex->ceili_t;
+		}
+		else if (y >= rayon->draw_start && y <= rayon->draw_end)
 			y += get_textures(game, rayon, buffer, x);
 		else
 			buffer[y][x] = game->tex->floor_t;

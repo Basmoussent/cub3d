@@ -38,6 +38,11 @@ int	ft_button(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		free_all(game, 0);
+	if (keycode == 'n' && !game->cloud->is_active)
+	{
+		game->cloud->is_active = 1;
+		game->cloud->x_pos = -game->cloud->img->width;  // Commence hors écran
+	}
 	upd_key_bool(keycode, game, 1);
 	return (0);
 }

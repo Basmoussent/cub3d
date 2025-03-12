@@ -67,6 +67,16 @@ void	free_all(t_game *g, int status)
 		}
 		if (g->doors)
 			free(g->doors);
+		if (g->cloud)
+		{
+			if (g->cloud->img)
+			{
+				if (g->cloud->img->img)
+					mlx_destroy_image(g->mlx, g->cloud->img->img);
+				free(g->cloud->img);
+			}
+			free(g->cloud);
+		}
 	}
 	exit(status);
 }
