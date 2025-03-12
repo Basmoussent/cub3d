@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 15:03:43 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/12 12:57:54 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,9 @@ static t_img	*find_side(t_game *game, t_rayon *rayon)
 {
 	t_img	*tex;
 
-	if (game->map[rayon->map_y][rayon->map_x] == 'D' ||
-		game->map[rayon->map_y][rayon->map_x] == 'O')
-	{
-		return game->tex->no_t;
-	}
-
+	if (game->map[rayon->map_y][rayon->map_x] == 'D'
+		|| game->map[rayon->map_y][rayon->map_x] == 'O')
+		return (game->tex->no_t);
 	tex = game->tex->no_t;
 	if (rayon->side == 1)
 	{

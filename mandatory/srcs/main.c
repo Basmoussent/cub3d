@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+	*/
 /*						+#+#+#+#+#+   +#+	 */
 /*   Created: 2025/03/04 07:29:48 by bdenfir		   #+#  #+#		  */
-/*   Updated: 2025/03/06 23:12:29 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 13:17:59 by agozlan          ###   ########.fr       */
 /*									  */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 {
 	t_game	game;
 	t_img	img;
-  t_img minimap;
+	t_img	minimap;
 
 	if (argc != 2)
 	{
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 	if (argv[1] && ft_strlen(argv[1]) >= 4
 		&& !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4))
 	{
-    game.minimap = &minimap;
+		game.minimap = &minimap;
 		game.img = &img;
 		init_game(&game, argv[1]);
 		parsing(&game);

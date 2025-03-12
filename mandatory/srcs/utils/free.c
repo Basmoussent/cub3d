@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/11 17:35:42 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/12 13:09:09 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	free_all(t_game *g, int status)
 		free_texture(g);
 		if (g->mlx)
 		{
-      if (g->minimap && g->minimap->img)
-        mlx_destroy_image(g->mlx, g->minimap->img);
+			if (g->minimap && g->minimap->img)
+				mlx_destroy_image(g->mlx, g->minimap->img);
 			if (g->img && g->img->img && g->win)
 			{
 				mlx_destroy_image(g->mlx, g->img->img);

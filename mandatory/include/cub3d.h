@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/11 12:34:13 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 13:22:15 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
