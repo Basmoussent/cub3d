@@ -77,7 +77,7 @@ void	extract_line(t_game *g, char *line, int *end)
 	else
 	{
 		while (g->map[i] != NULL)
-		i++;
+			i++;
 		add_line_to_map(g, line, i);
 	}
 	check_case(g, line);

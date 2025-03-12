@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_controls.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 11:32:26 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 15:05:13 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:17:07 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,7 @@ int	ft_button(int keycode, t_game *game)
 	return (0);
 }
 
-int	cross_close(t_game *game)
-{
-	free_all(game, 0);
-	return (0);
-}
-
-int ft_mouse(int button, int x, int y, t_game *game)
-{
-	(void)x;
-	(void)y;
-	if (button == 1)
-		game->key_bool[6] = 1;
-	else if (button == 3)
-		game->key_bool[7] = 1;
-	return (0);
-}
-
-int ft_mouse_release(int button, int x, int y, t_game *game)
+int	ft_mouse_release(int button, int x, int y, t_game *game)
 {
 	(void)x;
 	(void)y;

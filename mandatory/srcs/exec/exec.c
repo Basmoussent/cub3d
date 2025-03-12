@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 20:03:50 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:15:46 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	rendering(t_game *game)
 	return (free_tab((void **)buffer), free(rayon), 1);
 }
 
-int update_game(t_game *game)
+int	update_game(t_game *game)
 {
 	update_doors(game);
 	if (game->key_bool[0] || game->key_bool[1] || game->key_bool[2]
@@ -93,7 +93,7 @@ int update_game(t_game *game)
 	return (0);
 }
 
-int execution(t_game *game)
+int	execution(t_game *game)
 {
 	init_doors(game);
 	init_minimap(game);
