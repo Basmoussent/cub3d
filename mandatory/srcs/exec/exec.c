@@ -76,6 +76,8 @@ int	rendering(t_game *game)
 
 int	update_game(t_game *game)
 {
+	update_doors(game);
+	
 	if (game->key_bool[0] || game->key_bool[1] || game->key_bool[2]
 		|| game->key_bool[3] || game->key_bool[4] || game->key_bool[5])
 	{
@@ -86,20 +88,13 @@ int	update_game(t_game *game)
 	return (0);
 }
 
-int mouse_move(int x, int y, void *param)
-{
-    (void)param;
-    printf("Mouse moved to: X = %d, Y = %d\n", x, y);
-    return (0);
-}
-
 int	execution(t_game *game)
 {
+  init_doors(game);
 	init_minimap(game);  // ajouter securite
-  rendering(game);
+	rendering(game);
 	key_controls(game);
 	mlx_loop_hook(game->mlx, &update_game, game);
-	mlx_hook(game->win, 6, 0, mouse_move, NULL);
 	mlx_loop(game->mlx);
 	return (1);
 }

@@ -16,6 +16,12 @@ static t_img	*find_side(t_game *game, t_rayon *rayon)
 {
 	t_img	*tex;
 
+	if (game->map[rayon->map_y][rayon->map_x] == 'D' ||
+		game->map[rayon->map_y][rayon->map_x] == 'O')
+	{
+		return game->tex->no_t;
+	}
+
 	tex = game->tex->no_t;
 	if (rayon->side == 1)
 	{

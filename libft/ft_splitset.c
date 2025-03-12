@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_splitset.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 15:13:12 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 14:28:10 by bdenfir          ###   ########.fr       */
-/*                                                                            */
+/*																			*/
+/*														:::	  ::::::::   */
+/*   ft_splitset.c									  :+:	  :+:	:+:   */
+/*													+:+ +:+		 +:+	 */
+/*   By: bdenfir <bdenfir@student.42.fr>			+#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2024/11/16 15:13:12 by bdenfir		   #+#	#+#			 */
+/*   Updated: 2025/03/11 15:10:48 by bdenfir		  ###   ########.fr	   */
+/*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -35,6 +35,7 @@ static size_t	count_words(char const *s, char c, int max_split)
 static void	fill_tab(char *tab, char const *s, char c)
 {
 	size_t	i;
+
 	i = 0;
 	while (s[i] && s[i] != c)
 	{
@@ -42,6 +43,13 @@ static void	fill_tab(char *tab, char const *s, char c)
 		i++;
 	}
 	tab[i] = '\0';
+}
+
+static int	handle_max_split(char **rslt, const char *s, size_t j)
+{
+	rslt[j] = ft_strdup(&s[0]);
+	rslt[j + 1] = NULL;
+	return (0);
 }
 
 static int	fill_rslt(char **rslt, char const *s, char c, int max_split)
@@ -60,11 +68,7 @@ static int	fill_rslt(char **rslt, char const *s, char c, int max_split)
 		if (count > 0)
 		{
 			if (max_split > 0 && j >= (size_t)max_split)
-			{
-				rslt[j] = ft_strdup(&s[i]);
-				rslt[j + 1] = NULL;
-				return (0);
-			}
+				return (handle_max_split(rslt, &s[i], j));
 			rslt[j] = ft_calloc(count + 1, sizeof(char));
 			if (!rslt[j])
 				return (1);
@@ -74,8 +78,7 @@ static int	fill_rslt(char **rslt, char const *s, char c, int max_split)
 		else
 			i++;
 	}
-	rslt[j] = NULL;
-	return (0);
+	return (rslt[j] = NULL, 0);
 }
 
 char	**ft_splitset(char const *s, char c, int max_split)
@@ -86,7 +89,7 @@ char	**ft_splitset(char const *s, char c, int max_split)
 	if (!s)
 		return (NULL);
 	words = count_words(s, c, max_split);
-	rslt = ft_calloc(words + 3 ,sizeof(char *));
+	rslt = ft_calloc(words + 3, sizeof(char *));
 	if (!rslt)
 		return (NULL);
 	if (fill_rslt(rslt, s, c, max_split) == 1)
