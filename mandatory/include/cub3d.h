@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 13:25:31 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 19:44:57 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,10 @@ int		print_minimap(t_game *game);
 // Door system
 void	init_doors(t_game *game);
 void	update_doors(t_game *game);
+
+// Sun system
+void	init_sun(t_game *game);
+void	update_sun(t_game *game);
+int		get_sun_color(t_game *game, int x, int y);
 
 #endif

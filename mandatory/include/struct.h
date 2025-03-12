@@ -51,12 +51,14 @@ typedef struct s_door {
 	struct timeval	time;
 }	t_door;
 
-typedef struct s_cloud {
-	t_img   *img;
-	int     x_pos;
+typedef struct s_sun {
 	int     is_active;
-	double  speed;
-}   t_cloud;
+	int     radius;
+	int     max_radius;
+	int     growing;
+	int     x_center;
+	int     y_center;
+}   t_sun;
 
 typedef struct s_game
 {
@@ -67,10 +69,10 @@ typedef struct s_game
 	t_texture	*tex;
 	t_img		*img;
 	t_img		*minimap;
-	int			key_bool[6];
+	int			key_bool[8];
 	t_door		*doors;
 	int			nb_doors;
-	t_cloud     *cloud;
+	t_sun       *sun;
 }	t_game;
 
 typedef struct s_rayon

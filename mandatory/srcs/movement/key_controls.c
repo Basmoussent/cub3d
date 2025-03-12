@@ -38,10 +38,11 @@ int	ft_button(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		free_all(game, 0);
-	if (keycode == 'n' && !game->cloud->is_active)
+	if (keycode == 'c' && !game->sun->is_active)
 	{
-		game->cloud->is_active = 1;
-		game->cloud->x_pos = -game->cloud->img->width;  // Commence hors écran
+		game->sun->is_active = 1;
+		game->sun->radius = 0;
+		game->sun->growing = 1;
 	}
 	upd_key_bool(keycode, game, 1);
 	return (0);
@@ -53,9 +54,33 @@ int	cross_close(t_game *game)
 	return (0);
 }
 
+int ft_mouse(int button, int x, int y, t_game *game)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		game->key_bool[6] = 1;
+	else if (button == 3)
+		game->key_bool[7] = 1;
+	return (0);
+}
+
+int ft_mouse_release(int button, int x, int y, t_game *game)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		game->key_bool[6] = 0;
+	else if (button == 3)
+		game->key_bool[7] = 0;
+	return (0);
+}
+
 void	key_controls(t_game *game)
 {
 	mlx_hook(game->win, 17, 0, cross_close, game);
 	mlx_hook(game->win, 2, 1L << 0, ft_button, game);
 	mlx_hook(game->win, 3, 1L << 1, ft_release, game);
+	mlx_hook(game->win, 4, 1L << 2, ft_mouse, game);
+	mlx_hook(game->win, 5, 1L << 3, ft_mouse_release, game);
 }
