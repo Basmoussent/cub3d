@@ -112,7 +112,7 @@ int print_minimap(t_game *game)
 		}
 		y++;
 	}
-  free(buffer);
+  free_tab((void **)buffer);
 	mlx_put_image_to_window(game->mlx, game->win, game->minimap->img, WIN_WIDTH - MAP_WIDTH - 10, 10);
   return (1);
 }

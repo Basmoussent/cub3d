@@ -55,6 +55,8 @@ void	free_all(t_game *g, int status)
 		free_texture(g);
 		if (g->mlx)
 		{
+      if (g->minimap && g->minimap->img)
+        mlx_destroy_image(g->mlx, g->minimap->img);
 			if (g->img && g->img->img && g->win)
 			{
 				mlx_destroy_image(g->mlx, g->img->img);
