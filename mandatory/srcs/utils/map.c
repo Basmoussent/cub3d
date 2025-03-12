@@ -29,25 +29,24 @@ static int is_walkable(t_game *game, int x, int y)
   int real_x;
   int real_y;
 
-  real_x = (int)game->p->pos_x + (x - 4);
-  real_y = (int)game->p->pos_y + (y - 4);
+real_x = (int)game->p->pos_x - MAP_WIDTH / (2 * 15) + x / 15;
+real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
+
 
   if (real_x < 0 || real_x >= (int)ft_strlen(game->map[0]) || real_y < 0 || real_y >= ft_size(game->map))   // strlen a changer
     return (0);
-  if (game->map[real_y][real_x] == '0')
+  if (game->map[real_y][real_x] == '0' || game->map[real_y][real_x] == 'N'
+    || game->map[real_y][real_x] == 'W' || game->map[real_y][real_x] == 'E'
+    || game->map[real_y][real_x] == 'S')
     return (1);
   return (0);
 }
 
-//	 7 --> cube de 18    HEIGHT --> y
-//	 9 --> cube de 22 widht --> x
-//# define MAP_WIDTH 198
-//# define MAP_HEIGHT 126
-//
-//
-//
-// NEW WHIDTH 195   / 15
-// NEW HEIGHT 126   / 9
+// D ou O (o majuscule) pour les portes
+
+
+// NEW WHIDTH 198   / 15
+// NEW HEIGHT 198   / 15
 static void fill_map(t_game *game, int **buffer)
 {
 	int	y;
@@ -60,9 +59,9 @@ static void fill_map(t_game *game, int **buffer)
 		x = 0;
 		while (x < MAP_WIDTH)
 		{
-      if ((x / 15) == 4 && (y / 9) == 4)
+      if ((x / 15) == 6 && (y / 15) == 6)
           buffer[y][x] = 255;
-      else if (is_walkable(game, x / 15, y / 9))
+      else if (is_walkable(game, x, y))
           buffer[y][x] = 15837961;
 			else
           buffer[y][x] = 0;

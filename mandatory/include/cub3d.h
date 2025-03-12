@@ -23,8 +23,8 @@
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 
-# define MAP_WIDTH 200
-# define MAP_HEIGHT 126
+# define MAP_WIDTH 198
+# define MAP_HEIGHT 198
 
 # define ROTSPEED 0.1
 # define MOVESPEED 0.125
