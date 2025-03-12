@@ -29,10 +29,8 @@ static int is_walkable(t_game *game, int x, int y)
   int real_x;
   int real_y;
 
-real_x = (int)game->p->pos_x - MAP_WIDTH / (2 * 15) + x / 15;
-real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
-
-
+  real_x = (int)game->p->pos_x - MAP_WIDTH / (2 * 15) + x / 15;
+  real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
   if (real_x < 0 || real_x >= (int)ft_strlen(game->map[0]) || real_y < 0 || real_y >= ft_size(game->map))   // strlen a changer
     return (0);
   if (game->map[real_y][real_x] == '0' || game->map[real_y][real_x] == 'N'
@@ -43,7 +41,19 @@ real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
 }
 
 // D ou O (o majuscule) pour les portes
+static int  is_wall(t_game *game, int x, int y)
+{
+  int real_x;
+  int real_y;
 
+  real_x = (int)game->p->pos_x - MAP_WIDTH / (2 * 15) + x / 15;
+  real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
+  if (real_x < 0 || real_x >= (int)ft_strlen(game->map[0]) || real_y < 0 || real_y >= ft_size(game->map))   // strlen a changer
+    return (0);
+  if (game->map[real_y][real_x] == 'D' || game->map[real_y][real_x] == 'O')
+    return (1);
+  return (0);
+}
 
 // NEW WHIDTH 198   / 15
 // NEW HEIGHT 198   / 15
@@ -63,6 +73,8 @@ static void fill_map(t_game *game, int **buffer)
           buffer[y][x] = 255;
       else if (is_walkable(game, x, y))
           buffer[y][x] = 15837961;
+      else if (is_wall(game, x, y))
+          buffer[y][x] = 53317;
 			else
           buffer[y][x] = 0;
 			x++;
