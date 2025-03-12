@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/10 15:17:08 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/11 12:34:13 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
+
+# define MAP_WIDTH 198
+# define MAP_HEIGHT 198
 
 # define ROTSPEED 0.1
 # define MOVESPEED 0.125
@@ -83,6 +86,10 @@ void	set_player_pos(t_game *g, int pos_x, int dir_x, int dir_y);
 
 // free_graphical.c
 void	free_graphical(int type, void *mlx, void *img, void *win);
+
+// map.c
+int init_minimap(t_game *game);
+int print_minimap(t_game *game);
 
 // Door system
 void    init_doors(t_game *game);

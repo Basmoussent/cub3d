@@ -46,7 +46,6 @@ void	check_case(t_game *g, char *line)
 				|| line[y] == 'S' || line[y] == 'E' || line[y] == 'W'
 				|| line[y] == ' ' || line[y] == 'D' || line[y] == 'O'))
 		{
-			printf("character - %c\n", line[y]);
 			free(line);
 			print_error("Unknown character encountered\n");
 			free_all(g, 1);

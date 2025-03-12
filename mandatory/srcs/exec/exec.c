@@ -45,7 +45,7 @@ static int	**init_buffer(t_game *game, t_rayon *rayon)
 	{
 		buffer[x] = ft_calloc(sizeof(int), WIN_WIDTH);
 		if (!buffer[x])
-			return (free_tab((void **)buffer), free_all(game, 1), NULL);
+			return (free_tab((void **)buffer), free(rayon), free_all(game, 1), NULL);
 		x++;
 	}
 	buffer[x] = NULL;
@@ -70,6 +70,7 @@ int	rendering(t_game *game)
 		x++;
 	}
 	draw_buffer(game, buffer);
+  print_minimap(game);
 	return (free_tab((void **)buffer), free(rayon), 1);
 }
 
@@ -89,7 +90,8 @@ int	update_game(t_game *game)
 
 int	execution(t_game *game)
 {
-	init_doors(game);
+  init_doors(game);
+	init_minimap(game);  // ajouter securite
 	rendering(game);
 	key_controls(game);
 	mlx_loop_hook(game->mlx, &update_game, game);
