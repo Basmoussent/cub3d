@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:38:28 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/12 13:09:09 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 14:49:47 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,13 @@ void	free_all(t_game *g, int status)
 {
 	if (g)
 	{
-		free_tab((void **)g->map);
+		if (g->map)
+			free_tab((void **)g->map);
 		free_player(g->p);
 		free_texture(g);
 		if (g->mlx)
 		{
-			if (g->minimap && g->minimap->img)
+			if (g->minimap && g->minimap->img && g->win)
 				mlx_destroy_image(g->mlx, g->minimap->img);
 			if (g->img && g->img->img && g->win)
 			{

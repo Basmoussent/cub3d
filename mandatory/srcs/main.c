@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+	*/
 /*						+#+#+#+#+#+   +#+	 */
 /*   Created: 2025/03/04 07:29:48 by bdenfir		   #+#  #+#		  */
-/*   Updated: 2025/03/12 13:17:59 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 14:52:55 by agozlan          ###   ########.fr       */
 /*									  */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	init_game(t_game *g, char *file)
 	g->p = ft_calloc(1, sizeof(t_player));
 	g->mlx = NULL;
 	g->map = NULL;
+	g->minimap = NULL;
+	g->doors = NULL;
 	if (!g->tex || !g->p)
 		free_all(g, 1);
 	g->tex->fd = open(file, O_RDONLY);
