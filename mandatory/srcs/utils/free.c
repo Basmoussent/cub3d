@@ -68,6 +68,8 @@ void	free_all(t_game *g, int status)
 		}
 		if (g->doors)
 			free(g->doors);
+		if (g->sun)
+			free(g->sun);
 	}
 	exit(status);
 }

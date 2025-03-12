@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 12:57:00 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:03:50 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,27 @@ int	rendering(t_game *game)
 	return (free_tab((void **)buffer), free(rayon), 1);
 }
 
-int	update_game(t_game *game)
+int update_game(t_game *game)
 {
 	update_doors(game);
 	if (game->key_bool[0] || game->key_bool[1] || game->key_bool[2]
 		|| game->key_bool[3] || game->key_bool[4] || game->key_bool[5]
-		|| game->key_bool[6] || game->key_bool[7])
+		|| game->key_bool[6] || game->key_bool[7]
+		|| game->sun->is_active)
 	{
 		move_player(game);
 		rotate_camera(game);
+		update_sun(game);
 		rendering(game);
 	}
 	return (0);
 }
 
-int	execution(t_game *game)
+int execution(t_game *game)
 {
 	init_doors(game);
 	init_minimap(game);
+	init_sun(game);
 	rendering(game);
 	key_controls(game);
 	mlx_loop_hook(game->mlx, &update_game, game);

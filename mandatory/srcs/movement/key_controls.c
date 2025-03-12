@@ -38,6 +38,12 @@ int	ft_button(int keycode, t_game *game)
 {
 	if (keycode == ESC)
 		free_all(game, 0);
+	if (keycode == 'c' && !game->sun->is_active)
+	{
+		game->sun->is_active = 1;
+		game->sun->radius = 0;
+		game->sun->growing = 1;
+	}
 	upd_key_bool(keycode, game, 1);
 	return (0);
 }

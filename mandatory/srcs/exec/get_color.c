@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 12:57:54 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 19:39:42 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,21 @@ int	get_textures(t_game *game, t_rayon *rayon, int **buffer, int x)
 	return (y - 1);
 }
 
-void	get_color(t_game *game, t_rayon *rayon, int **buffer, int x)
+void get_color(t_game *game, t_rayon *rayon, int **buffer, int x)
 {
-	int	y;
+	int y;
 
 	y = 0;
 	while (y < WIN_HEIGHT)
 	{
 		if (y < rayon->draw_start)
-			buffer[y][x] = game->tex->ceili_t;
-		if (y >= rayon->draw_start && y <= rayon->draw_end)
+		{
+			if (game->sun->is_active && x < 100 && y < 100)
+				buffer[y][x] = get_sun_color(game, x, y);
+			else
+				buffer[y][x] = game->tex->ceili_t;
+		}
+		else if (y >= rayon->draw_start && y <= rayon->draw_end)
 			y += get_textures(game, rayon, buffer, x);
 		else
 			buffer[y][x] = game->tex->floor_t;

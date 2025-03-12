@@ -51,6 +51,15 @@ typedef struct s_door {
 	struct timeval	time;
 }	t_door;
 
+typedef struct s_sun {
+	int     is_active;
+	int     radius;
+	int     max_radius;
+	int     growing;
+	int     x_center;
+	int     y_center;
+}   t_sun;
+
 typedef struct s_game
 {
 	void		*mlx;
@@ -63,6 +72,7 @@ typedef struct s_game
 	int			key_bool[8];
 	t_door		*doors;
 	int			nb_doors;
+	t_sun       *sun;
 }	t_game;
 
 typedef struct s_rayon
