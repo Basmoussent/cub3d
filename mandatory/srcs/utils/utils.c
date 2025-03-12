@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:50:30 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/10 15:06:39 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:17:36 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,21 @@ void	init_keybool(t_game *g)
 	g->key_bool[5] = 0;
 	g->key_bool[6] = 0;
 	g->key_bool[7] = 0;
+}
+
+int	cross_close(t_game *game)
+{
+	free_all(game, 0);
+	return (0);
+}
+
+int	ft_mouse(int button, int x, int y, t_game *game)
+{
+	(void)x;
+	(void)y;
+	if (button == 1)
+		game->key_bool[6] = 1;
+	else if (button == 3)
+		game->key_bool[7] = 1;
+	return (0);
 }

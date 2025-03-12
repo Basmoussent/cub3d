@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 09:56:11 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 19:39:42 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/12 20:15:38 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	get_textures(t_game *game, t_rayon *rayon, int **buffer, int x)
 	return (y - 1);
 }
 
-void get_color(t_game *game, t_rayon *rayon, int **buffer, int x)
+void	get_color(t_game *game, t_rayon *rayon, int **buffer, int x)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (y < WIN_HEIGHT)
