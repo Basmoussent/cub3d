@@ -34,4 +34,6 @@ void	init_keybool(t_game *g)
 	g->key_bool[3] = 0;
 	g->key_bool[4] = 0;
 	g->key_bool[5] = 0;
+	g->key_bool[6] = 0;
+	g->key_bool[7] = 0;
 }

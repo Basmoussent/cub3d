@@ -81,7 +81,8 @@ int	update_game(t_game *game)
 {
 	update_doors(game);
 	if (game->key_bool[0] || game->key_bool[1] || game->key_bool[2]
-		|| game->key_bool[3] || game->key_bool[4] || game->key_bool[5])
+		|| game->key_bool[3] || game->key_bool[4] || game->key_bool[5]
+		|| game->key_bool[6] || game->key_bool[7])
 	{
 		move_player(game);
 		rotate_camera(game);

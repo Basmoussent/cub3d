@@ -60,7 +60,7 @@ typedef struct s_game
 	t_texture	*tex;
 	t_img		*img;
 	t_img		*minimap;
-	int			key_bool[6];
+	int			key_bool[8];
 	t_door		*doors;
 	int			nb_doors;
 }	t_game;

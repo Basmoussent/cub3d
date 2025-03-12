@@ -35,8 +35,8 @@ void	rotation(t_game *game, double a)
 // Left = 4 / Right = 5
 void	rotate_camera(t_game *game)
 {
-	if (game->key_bool[4])
+	if (game->key_bool[4] || game->key_bool[6])
 		rotation(game, ROTSPEED * -1);
-	if (game->key_bool[5])
+	if (game->key_bool[5] || game->key_bool[7])
 		rotation(game, ROTSPEED);
 }
