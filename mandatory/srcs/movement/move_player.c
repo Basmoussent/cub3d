@@ -28,7 +28,7 @@ void	move(t_game *game, double vector_x, double vector_y)
 	{
 		game->p->pos_y = vector_y;
 		reste = modf(vector_y, &unused);
-		if (!reste && game->map[(int)vector_y - 1][(int)game->p->pos_y] == '1')
+		if (!reste && game->map[(int)vector_y - 1][(int)game->p->pos_x] == '1')
 			game->p->pos_y += 0.1;
 	}
 	rendering(game);
