@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/10 12:47:46 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 13:26:59 by agozlan          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ typedef struct s_player {
 }	t_player;
 
 typedef struct s_door {
-	int     x;
-	int     y;
-	int     is_open;
+	int				x;
+	int				y;
+	int				is_open;
 	struct timeval	time;
-} t_door;
+}	t_door;
 
 typedef struct s_game
 {
@@ -59,10 +59,10 @@ typedef struct s_game
 	t_player	*p;
 	t_texture	*tex;
 	t_img		*img;
-  t_img   *minimap;
+	t_img		*minimap;
 	int			key_bool[6];
-	t_door      *doors;
-	int         nb_doors;
+	t_door		*doors;
+	int			nb_doors;
 }	t_game;
 
 typedef struct s_rayon

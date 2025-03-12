@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 13:22:15 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/12 13:25:31 by agozlan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,6 @@ void	move_player(t_game *game);
 // rotate_camera.c
 void	rotate_camera(t_game *game);
 
-// door_system.c
-void    update_doors(t_game *game);
-void    init_doors(t_game *game);
-
 // free.c
 void	print_error(char *msg);
 int		ca_triche(t_game *g);
@@ -89,11 +85,11 @@ void	set_player_pos(t_game *g, int pos_x, int dir_x, int dir_y);
 void	free_graphical(int type, void *mlx, void *img, void *win);
 
 // map.c
-int init_minimap(t_game *game);
-int print_minimap(t_game *game);
+int		init_minimap(t_game *game);
+int		print_minimap(t_game *game);
 
 // Door system
-void    init_doors(t_game *game);
-void    update_doors(t_game *game);
+void	init_doors(t_game *game);
+void	update_doors(t_game *game);
 
 #endif
