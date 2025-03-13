@@ -19,8 +19,9 @@ static int	is_walkable(t_game *game, int x, int y)
 
 	real_x = (int)game->p->pos_x - MAP_WIDTH / (2 * 15) + x / 15;
 	real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
-	if (real_x < 0 || real_x >= (int)ft_strlen(game->map[(int)game->p->pos_y])
-		|| real_y < 0 || real_y >= ft_size(game->map))
+	if (real_y < 0 || real_y >= ft_size(game->map))
+		return (0);
+	if (real_x < 0 || real_x >= (int)ft_strlen(game->map[real_y]))
 		return (0);
 	if (game->map[real_y][real_x] == '0' || game->map[real_y][real_x] == 'N'
 		|| game->map[real_y][real_x] == 'W' || game->map[real_y][real_x] == 'E'
@@ -37,8 +38,9 @@ static int	is_wall(t_game *game, int x, int y)
 
 	real_x = (int)game->p->pos_x - MAP_WIDTH / (2 * 15) + x / 15;
 	real_y = (int)game->p->pos_y - MAP_HEIGHT / (2 * 15) + y / 15;
-	if (real_x < 0 || real_x >= (int)ft_strlen(game->map[(int)game->p->pos_y])
-		|| real_y < 0 || real_y >= ft_size(game->map))
+	if (real_y < 0 || real_y >= ft_size(game->map))
+		return (0);
+	if (real_x < 0 || real_x >= (int)ft_strlen(game->map[real_y]))
 		return (0);
 	if (game->map[real_y][real_x] == 'D' || game->map[real_y][real_x] == 'O')
 		return (1);
