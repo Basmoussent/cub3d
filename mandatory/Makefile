@@ -57,6 +57,10 @@ fclean: clean
 	@$(MAKE) -C $(LIBFTDIR) fclean
 	$(RM) $(NAME)
 
+norme:
+	@norminette $(LIBFTDIR)
+	@norminette $(SRCS)
+
 re: fclean all
 
 .PHONY: all clean fclean re

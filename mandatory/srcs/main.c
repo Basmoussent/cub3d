@@ -55,8 +55,8 @@ int	main(int argc, char **argv)
 	{
 		minimap = (t_img){0};
 		init_game(&game, argv[1]);
-		game.img = ft_calloc(1, sizeof(t_img));
 		parsing(&game);
+		game.img = ft_calloc(1, sizeof(t_img));
 		game.minimap = &minimap;
 		execution(&game);
 		free_all(&game, 0);

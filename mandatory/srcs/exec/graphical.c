@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 11:08:07 by bdenfir           #+#    #+#             */
-/*   Updated: 2025/03/13 11:48:48 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/13 11:55:41 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	init_image(void *mlx, t_img *img)
 
 int	init_graphical(t_game *game)
 {
-	game->win = NULL;
+	game->win = mlx_new_window(game->mlx, WIN_WIDTH, WIN_HEIGHT, "Cub3d");
 	if (!game->win)
 		return (free(game->img), game->img = NULL, free_all(game, 1), 1);
 	if (!init_image(game->mlx, game->img))
