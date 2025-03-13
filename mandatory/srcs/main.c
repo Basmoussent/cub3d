@@ -20,6 +20,7 @@ void	init_game(t_game *g, char *file)
 	g->map = NULL;
 	g->minimap = NULL;
 	g->doors = NULL;
+	g->sun = NULL;
 	if (!g->tex || !g->p)
 		free_all(g, 1);
 	g->tex->fd = open(file, O_RDONLY);
@@ -53,8 +54,9 @@ int	main(int argc, char **argv)
 	{
 		game.img = &img;
 		init_game(&game, argv[1]);
-		game.minimap = &minimap;
+	//	game.minimap = &minimap;
 		parsing(&game);
+		game.minimap = &minimap;
 		execution(&game);
 		free_all(&game, 0);
 	}
