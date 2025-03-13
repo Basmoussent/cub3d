@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exec.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/04 14:45:54 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 20:15:46 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/13 10:40:18 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,11 @@ int	update_game(t_game *game)
 
 int	execution(t_game *game)
 {
+	if (!init_image(game->mlx, game->img))
+	{
+		print_error("Failed to create window");
+		free_all(game, 1);
+	}
 	init_doors(game);
 	init_minimap(game);
 	init_sun(game);

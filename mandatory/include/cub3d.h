@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bdenfir <bdenfir@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 20:17:03 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/13 10:40:51 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	free_graphical(int type, void *mlx, void *img, void *win);
 
 // map.c
 int		init_minimap(t_game *game);
+int		init_image(void *mlx, t_img *img);
 int		print_minimap(t_game *game);
 
 // Door system

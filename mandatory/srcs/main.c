@@ -54,7 +54,6 @@ int	main(int argc, char **argv)
 	{
 		game.img = &img;
 		init_game(&game, argv[1]);
-	//	game.minimap = &minimap;
 		parsing(&game);
 		game.minimap = &minimap;
 		execution(&game);
