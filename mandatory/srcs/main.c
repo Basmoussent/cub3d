@@ -19,6 +19,7 @@ void	init_game(t_game *g, char *file)
 	g->mlx = NULL;
 	g->map = NULL;
 	g->minimap = NULL;
+	g->img = NULL;
 	g->doors = NULL;
 	g->sun = NULL;
 	if (!g->tex || !g->p)
@@ -53,9 +54,9 @@ int	main(int argc, char **argv)
 	if (argv[1] && ft_strlen(argv[1]) >= 4
 		&& !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4))
 	{
-		game.img = &img;
 		init_game(&game, argv[1]);
 		parsing(&game);
+		game.img = &img;
 		game.minimap = &minimap;
 		execution(&game);
 		free_all(&game, 0);

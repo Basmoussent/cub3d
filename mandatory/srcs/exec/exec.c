@@ -64,7 +64,7 @@ int	rendering(t_game *game)
 	x = 0;
 	rayon = ft_calloc(sizeof(t_rayon), 1);
 	if (!rayon)
-		return (0);
+		return (free_all(game, 0), 1);
 	buffer = init_buffer(game, rayon);
 	while (x < WIN_WIDTH)
 	{
