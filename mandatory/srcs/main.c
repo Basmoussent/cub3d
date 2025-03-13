@@ -19,6 +19,7 @@ void	init_game(t_game *g, char *file)
 	g->mlx = NULL;
 	g->map = NULL;
 	g->minimap = NULL;
+	g->img = NULL;
 	g->doors = NULL;
 	g->sun = NULL;
 	if (!g->tex || !g->p)
