@@ -6,7 +6,7 @@
 /*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 10:44:59 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/13 11:38:34 by bdenfir          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:12:39 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,6 @@ int		get_sun_color(t_game *game, int x, int y);
 // UTILS
 int		cross_close(t_game *game);
 int		ft_mouse(int button, int x, int y, t_game *game);
+void	chech_edges(t_game *g);
+
 #endif

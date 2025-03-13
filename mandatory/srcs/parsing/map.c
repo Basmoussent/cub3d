@@ -46,7 +46,7 @@ void	check_case(t_game *g, char *line)
 	{
 		if (!(line[y] == '0' || line[y] == '1' || line[y] == 'N'
 				|| line[y] == 'S' || line[y] == 'E' || line[y] == 'W'
-				|| line[y] == ' ' || line[y] == 'D' || line[y] == 'O'))
+				|| line[y] == ' ' || line[y] == 'D'))
 		{
 			free(line);
 			print_error("Unknown character encountered\n");
@@ -134,4 +134,5 @@ void	check_surrounded_by_walls(t_game *g)
 		}
 		i++;
 	}
+	chech_edges(g);
 }

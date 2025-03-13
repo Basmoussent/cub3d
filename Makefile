@@ -9,6 +9,8 @@ all: pipex_m
 # Bonus target
 bonus: pipex_b
 
+norme: file_norme
+
 library:
 	@echo "Building in mlx library"
 	@$(MAKE) -C $(DIR_MLX)
@@ -17,6 +19,8 @@ pipex_m: library
 	@echo "Building in cub3d..."
 	@$(MAKE) -C $(DIR_M)
 
+file_norme:
+	@$(MAKE) -C $(DIR_M) norme
 
 clean:
 	@echo "Cleaning in all directories..."
@@ -25,15 +29,5 @@ clean:
 fclean:
 	@echo "Fully cleaning in all directories..."
 	@$(MAKE) -C $(DIR_M) fclean
-
-norme:
-	@echo "Norme check for Mandatory folder ..."
-	norminette $(DIR_M)/srcs
-	norminette $(DIR_M)/include/struct.h
-	@echo "Norme check for libft folder ..."
-	norminette libft
-	@echo "Norme check for bonus folder ..."
-	norminette $(DIR_B)/srcs
-	norminette $(DIR_B)/include/struct.h
 
 re: fclean all

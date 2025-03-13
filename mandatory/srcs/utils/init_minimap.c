@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_minimap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agozlan <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:15:53 by agozlan           #+#    #+#             */
-/*   Updated: 2025/03/12 13:16:03 by agozlan          ###   ########.fr       */
+/*   Updated: 2025/03/13 12:15:59 by bdenfir          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,31 @@ int	init_minimap(t_game *game)
 	if (!game->minimap->addr)
 		return (0);
 	return (1);
+}
+
+void	chech_edges(t_game *g)
+{
+	int	i;
+	int	x;
+
+	i = ft_size(g->map);
+	x = -1;
+	while (++x < i)
+	{
+		if (x == 0 && occur(g->map[x], 'D') != 0)
+		{
+			print_error("Door on edge unauthorized\n");
+			free_all(g, 1);
+		}
+		if (g->map[x][0] == 'D' || g->map[x][ft_strlen(g->map[x]) - 1] == 'D')
+		{
+			print_error("Door on edge unauthorized\n");
+			free_all(g, 1);
+		}
+		if (x == i && occur(g->map[x], 'D') != 0)
+		{
+			print_error("Door on edge unauthorized\n");
+			free_all(g, 1);
+		}
+	}
 }
