@@ -21,6 +21,7 @@ void	add_line_to_map(t_game *g, char *line, int i)
 	if (!new_line)
 	{
 		free(line);
+		print_error("Malloc fail\n");
 		free_all(g, 1);
 	}
 	new_map = (char **)ft_realloc(g->map, sizeof(char *) * (i + 1),
@@ -28,7 +29,8 @@ void	add_line_to_map(t_game *g, char *line, int i)
 	if (!new_map)
 	{
 		free(line);
-		return ;
+		print_error("Malloc fail\n");
+		free_all(g, 1);
 	}
 	g->map = new_map;
 	g->map[i] = new_line;
@@ -85,13 +87,24 @@ void	extract_line(t_game *g, char *line, int *end)
 
 void	init_map(t_game *g, char *line)
 {
+	char	*new_line;
+
+	new_line = ft_strdup(line);
+	if (!new_line)
+	{
+		free(line);
+		print_error("Malloc fail\n");
+		free_all(g, 1);
+	}
 	g->map = (char **)ft_calloc(2, sizeof(char *));
 	if (!g->map)
 	{
 		free(line);
-		return ;
+		free(new_line);
+		print_error("Malloc fail\n");
+		free_all(g, 1);
 	}
-	g->map[0] = ft_strdup(line);
+	g->map[0] = new_line;
 	g->map[1] = NULL;
 }
 

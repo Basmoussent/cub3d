@@ -42,7 +42,6 @@ void	init_game(t_game *g, char *file)
 int	main(int argc, char **argv)
 {
 	t_game	game;
-	t_img	img;
 	t_img	minimap;
 
 	if (argc != 2)
@@ -53,7 +52,7 @@ int	main(int argc, char **argv)
 	if (argv[1] && ft_strlen(argv[1]) >= 4
 		&& !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4))
 	{
-		game.img = &img;
+		game.img = ft_calloc(1, sizeof(t_img));
 		init_game(&game, argv[1]);
 		parsing(&game);
 		game.minimap = &minimap;

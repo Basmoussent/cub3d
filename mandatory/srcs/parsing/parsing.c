@@ -22,7 +22,7 @@ int	rgb_to_hex(char **rgb, t_game *game, char *line)
 	rgb_values = ft_split(rgb[1], ',');
 	if (!rgb_values)
 	{
-		free((void **)rgb);
+		free_tab((void **)rgb);
 		free(line);
 		print_error("Malloc failed for rgb_values\n");
 		free_all(game, 1);
