@@ -29,7 +29,8 @@ void	init_game(t_game *g, char *file)
 		print_error("Failed to open file\n");
 		free_all(g, 127);
 	}
-	if (!init_graphical(g))
+	g->mlx = mlx_init();
+	if (!g->mlx)
 		free_all(g, 1);
 	init_keybool(g);
 	g->tex->floor_t = -1;
