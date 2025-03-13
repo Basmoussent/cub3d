@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 	if (argv[1] && ft_strlen(argv[1]) >= 4
 		&& !ft_strncmp(argv[1] + ft_strlen(argv[1]) - 4, ".cub", 4))
 	{
+		minimap = (t_img){0};
 		init_game(&game, argv[1]);
 		game.img = ft_calloc(1, sizeof(t_img));
 		parsing(&game);

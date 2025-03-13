@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*																			*/
-/*														:::	  ::::::::   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
-/*													+:+ +:+		 +:+	 */
-/*   By: bdenfir <bdenfir@42.fr>					+#+  +:+	   +#+		*/
-/*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/12/11 14:15:28 by bdenfir		   #+#	#+#			 */
-/*   Updated: 2025/03/12 13:26:59 by agozlan          ###   ########.fr       */
-/*																			*/
+/*                                                    +:+ +:+         +:+     */
+/*   By: bdenfir <bdenfir@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/03/13 11:38:59 by bdenfir           #+#    #+#             */
+/*   Updated: 2025/03/13 11:40:45 by bdenfir          ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
@@ -52,13 +52,13 @@ typedef struct s_door {
 }	t_door;
 
 typedef struct s_sun {
-	int     is_active;
-	int     radius;
-	int     max_radius;
-	int     growing;
-	int     x_center;
-	int     y_center;
-}   t_sun;
+	int		is_active;
+	int		radius;
+	int		max_radius;
+	int		growing;
+	int		x_center;
+	int		y_center;
+}	t_sun;
 
 typedef struct s_game
 {
@@ -72,7 +72,7 @@ typedef struct s_game
 	int			key_bool[8];
 	t_door		*doors;
 	int			nb_doors;
-	t_sun       *sun;
+	t_sun		*sun;
 }	t_game;
 
 typedef struct s_rayon
